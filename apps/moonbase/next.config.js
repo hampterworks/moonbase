@@ -1,5 +1,6 @@
-const { composePlugins, withNx } = require('@nx/next');
 const path = require('path');
+
+const { composePlugins, withNx } = require('@nx/next');
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
@@ -10,17 +11,19 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
-  experimental: {
-    // This allows Next.js to resolve packages from the workspace
-    externalDir: true,
+  basePath: '/moonbase', // Replace with your actual repository name
+  assetPrefix: '/moonbase/',
+  output: 'export',
+  images: {
+    unoptimized: true
   },
-  webpack: (config, { isServer }) => {
-    // Add the path mapping for webpack to resolve properly
+  trailingSlash: true,
+  transpilePackages: ['@moonbase/ui-components'],
+  webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@moonbase/ui-components': path.resolve(__dirname, '../../ui-components/src/index.ts'),
     };
-
     return config;
   },
 };
