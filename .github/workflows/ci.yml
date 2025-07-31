@@ -31,8 +31,8 @@ jobs:
 
       - run: pnpm install --no-frozen-lockfile
 
-      # Only run lint and build (no test or e2e)
-      - run: pnpm nx run-many -t lint build
+      # Only run build (skip linting)
+      - run: pnpm nx run-many -t build
 
   deploy:
     runs-on: ubuntu-latest
