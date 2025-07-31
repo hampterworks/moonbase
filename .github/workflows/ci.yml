@@ -35,15 +35,17 @@ jobs:
 
       - run: pnpm install --no-frozen-lockfile
 
-      # Build ui-components first, then build moonbase (which will create the out directory)
+      # Build ui-components first, then build moonbase
       - run: pnpm nx build ui-components
       - run: pnpm nx build @moonbase/moonbase --configuration=production
 
       # Debug: List what was created in dist
-      - name: Debug - List dist/apps/moonbase
+      - name: Debug - List build output
         run: |
           echo "Checking dist/apps/moonbase:"
           ls -la dist/apps/moonbase/ || echo "dist/apps/moonbase not found"
+          echo "Files in root of build output:"
+          find dist/apps/moonbase -maxdepth 2 -type f | head -10
 
       - name: Configure Pages
         uses: actions/configure-pages@v4

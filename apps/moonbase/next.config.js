@@ -9,8 +9,6 @@ const nextConfig = {
   nx: {
     svgr: false,
   },
-  basePath: '/moonbase',
-  assetPrefix: '/moonbase/',
   output: 'export',
   images: {
     unoptimized: true
