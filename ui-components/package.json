@@ -1,0 +1,18 @@
+{
+  "name": "@moonbase/ui-components",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "npx --yes vite@^6.0.0 build --watch"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles": "./dist/styles/*"
+  },
+  "files": ["dist"]
+}

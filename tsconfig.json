@@ -8,6 +8,9 @@
     },
     {
       "path": "./apps/moonbase"
+    },
+    {
+      "path": "./ui-components"
     }
   ]
 }

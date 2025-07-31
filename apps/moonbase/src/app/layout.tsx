@@ -1,3 +1,4 @@
+import { Topbar } from '@moonbase/ui-components';
 import './global.css';
 
 export const metadata = {
@@ -12,7 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+      <Topbar></Topbar>
+      {children}
+      </body>
     </html>
   );
 }

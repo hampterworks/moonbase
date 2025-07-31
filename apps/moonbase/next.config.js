@@ -1,15 +1,28 @@
-//@ts-check
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next');
+const path = require('path');
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
-  // Use this to set Nx-specific options
-  // See: https://nx.dev/recipes/next/next-config-setup
-  nx: {},
+  nx: {
+    // Set this to true if you would like to use SVGR
+    // See: https://github.com/gregberge/svgr
+    svgr: false,
+  },
+  experimental: {
+    // This allows Next.js to resolve packages from the workspace
+    externalDir: true,
+  },
+  webpack: (config, { isServer }) => {
+    // Add the path mapping for webpack to resolve properly
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@moonbase/ui-components': path.resolve(__dirname, '../../ui-components/src/index.ts'),
+    };
+
+    return config;
+  },
 };
 
 const plugins = [

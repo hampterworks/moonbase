@@ -1,0 +1,41 @@
+{
+  "name": "moonbase",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/moonbase/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "dependsOn": ["^build"],
+      "options": {
+        "outputPath": "dist/apps/moonbase"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/moonbase"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:dev",
+      "defaultConfiguration": "development",
+      "dependsOn": ["^build"],
+      "options": {
+        "dev": true,
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "dev": true
+        },
+        "production": {
+          "dev": false
+        }
+      }
+    }
+  }
+}
