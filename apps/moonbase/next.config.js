@@ -14,6 +14,8 @@ const nextConfig = {
     unoptimized: true
   },
   trailingSlash: true,
+  // Add basePath for GitHub Pages if needed
+  basePath: process.env.NODE_ENV === 'production' ? '/moonbase' : '',
   transpilePackages: ['@moonbase/ui-components'],
   webpack: (config) => {
     config.resolve.alias = {
