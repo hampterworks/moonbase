@@ -1,0 +1,78 @@
+{
+  "name": "@moonbase/moonbase",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/moonbase/src",
+  "projectType": "application",
+  "tags": ["npm:private"],
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{projectRoot}/.next"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/moonbase"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "dist/apps/moonbase"
+        },
+        "production": {
+          "outputPath": "dist/apps/moonbase"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "@moonbase/moonbase:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "@moonbase/moonbase:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "@moonbase/moonbase:build:production",
+          "dev": false
+        }
+      }
+    },
+    "dev": {
+      "executor": "@nx/next:server",
+      "options": {
+        "buildTarget": "@moonbase/moonbase:build",
+        "dev": true
+      }
+    },
+    "start": {
+      "executor": "@nx/next:server",
+      "options": {
+        "buildTarget": "@moonbase/moonbase:build",
+        "dev": false
+      },
+      "dependsOn": ["build"]
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "@moonbase/moonbase:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/moonbase/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/moonbase"],
+      "options": {
+        "jestConfig": "apps/moonbase/jest.config.ts"
+      }
+    }
+  }
+}
