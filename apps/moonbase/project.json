@@ -37,7 +37,7 @@
       "dependsOn": ["^build"],
       "options": {
         "commands": [
-          "nx build @moonbase/moonbase:production",
+          "nx build @moonbase/moonbase --configuration=production",
           "nx export @moonbase/moonbase"
         ],
         "parallel": false
