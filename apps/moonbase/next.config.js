@@ -1,5 +1,9 @@
 const path = require('path');
 const { composePlugins, withNx } = require('@nx/next');
+const fs = require('fs');
+
+// Check if we should use built version or source
+const useBuiltLibrary = fs.existsSync(path.resolve(__dirname, '../../dist/ui-components/index.js'));
 
 const nextConfig = {
   nx: {
@@ -16,7 +20,9 @@ const nextConfig = {
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@moonbase/ui-components': path.resolve(__dirname, '../../ui-components/src/index.ts'),
+      '@moonbase/ui-components': useBuiltLibrary
+        ? path.resolve(__dirname, '../../dist/ui-components')
+        : path.resolve(__dirname, '../../ui-components/src/index.ts'),
     };
     return config;
   },

@@ -4,11 +4,13 @@
   "sourceRoot": "apps/moonbase/src",
   "projectType": "application",
   "tags": ["npm:private"],
+  "implicitDependencies": ["ui-components"],
   "targets": {
     "build": {
       "executor": "@nx/next:build",
-      "outputs": ["{projectRoot}/.next"],
+      "outputs": ["{projectRoot}/.next", "{projectRoot}/out"],
       "defaultConfiguration": "production",
+      "dependsOn": ["^build"],
       "options": {
         "outputPath": "dist/apps/moonbase"
       },
