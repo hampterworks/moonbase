@@ -41,6 +41,14 @@
         }
       }
     },
+    "export": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "next export",
+        "cwd": "apps/moonbase"
+      }
+    },
     "dev": {
       "executor": "@nx/next:server",
       "options": {
