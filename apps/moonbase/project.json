@@ -8,7 +8,7 @@
   "targets": {
     "build": {
       "executor": "@nx/next:build",
-      "outputs": ["{projectRoot}/.next", "{projectRoot}/out"],
+      "outputs": ["{projectRoot}/.next"],
       "defaultConfiguration": "production",
       "dependsOn": ["^build"],
       "options": {
@@ -21,6 +21,26 @@
         "production": {
           "outputPath": "dist/apps/moonbase"
         }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "outputs": ["{projectRoot}/out"],
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "@moonbase/moonbase:build:production"
+      }
+    },
+    "build-static": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/out"],
+      "dependsOn": ["^build"],
+      "options": {
+        "commands": [
+          "nx build @moonbase/moonbase:production",
+          "nx export @moonbase/moonbase"
+        ],
+        "parallel": false
       }
     },
     "serve": {
@@ -55,12 +75,6 @@
         "dev": false
       },
       "dependsOn": ["build"]
-    },
-    "export": {
-      "executor": "@nx/next:export",
-      "options": {
-        "buildTarget": "@moonbase/moonbase:build:production"
-      }
     },
     "lint": {
       "executor": "@nx/eslint:lint",

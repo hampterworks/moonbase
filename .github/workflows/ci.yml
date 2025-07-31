@@ -35,8 +35,9 @@ jobs:
 
       - run: pnpm install --no-frozen-lockfile
 
-      # Build everything in correct order (ui-components first, then moonbase)
-      - run: pnpm nx run-many -t build
+      # Build ui-components first, then build and export moonbase
+      - run: pnpm nx build ui-components
+      - run: pnpm nx build-static @moonbase/moonbase
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
