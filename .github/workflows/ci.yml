@@ -1,10 +1,7 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
+  workflow_dispatch: # Only manual trigger
 
 permissions:
   actions: read
@@ -42,7 +39,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: main
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main' # Changed to main
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
