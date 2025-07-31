@@ -12,14 +12,14 @@
       "defaultConfiguration": "production",
       "dependsOn": ["^build"],
       "options": {
-        "outputPath": "dist/apps/moonbase"
+        "outputPath": "apps/moonbase/out"
       },
       "configurations": {
         "development": {
-          "outputPath": "dist/apps/moonbase"
+          "outputPath": "apps/moonbase/out"
         },
         "production": {
-          "outputPath": "dist/apps/moonbase"
+          "outputPath": "apps/moonbase/out"
         }
       }
     },
@@ -39,14 +39,6 @@
           "buildTarget": "@moonbase/moonbase:build:production",
           "dev": false
         }
-      }
-    },
-    "export": {
-      "executor": "nx:run-commands",
-      "dependsOn": ["build"],
-      "options": {
-        "command": "next export",
-        "cwd": "apps/moonbase"
       }
     },
     "dev": {

@@ -35,20 +35,19 @@ jobs:
 
       - run: pnpm install --no-frozen-lockfile
 
-      # Build ui-components first, then build and export moonbase
+      # Build using Nx - this should create the out folder
       - run: pnpm nx build ui-components
       - run: pnpm nx build @moonbase/moonbase --configuration=production
 
-      # Debug: List what was created
-      - name: Debug - List build output
+      # Debug: Check what was created
+      - name: Debug - Check build output
         run: |
-          echo "Checking apps/moonbase/out:"
-          ls -la apps/moonbase/out/ || echo "apps/moonbase/out not found"
-          echo "Checking dist/apps/moonbase:"
-          ls -la dist/apps/moonbase/ || echo "dist/apps/moonbase not found"
-          echo "Looking for static files:"
-          find apps/moonbase -name "*.html" | head -5
-          find dist/apps/moonbase -name "*.html" | head -5
+          echo "Contents of apps/moonbase after build:"
+          ls -la apps/moonbase/
+          echo "Looking for out directory:"
+          find . -name "out" -type d
+          echo "Contents of out directory (if exists):"
+          ls -la apps/moonbase/out/ || echo "No out directory found"
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
