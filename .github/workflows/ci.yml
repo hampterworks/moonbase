@@ -39,17 +39,11 @@ jobs:
       - run: pnpm nx build ui-components
       - run: pnpm nx build @moonbase/moonbase --configuration=production
 
-      # Debug: List what was created
-      - name: Debug - List build outputs
+      # Debug: List what was created in dist
+      - name: Debug - List dist/apps/moonbase
         run: |
-          echo "Listing apps/moonbase directory:"
-          ls -la apps/moonbase/
-          echo "Checking for .next directory:"
-          ls -la apps/moonbase/.next/ || echo ".next directory not found"
-          echo "Checking for out directory:"
-          ls -la apps/moonbase/out/ || echo "out directory not found"
-          echo "Checking dist directory:"
-          ls -la dist/ || echo "dist directory not found"
+          echo "Checking dist/apps/moonbase:"
+          ls -la dist/apps/moonbase/ || echo "dist/apps/moonbase not found"
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
@@ -57,7 +51,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./apps/moonbase/out
+          path: ./dist/apps/moonbase
 
       - name: Deploy to GitHub Pages
         id: deployment
