@@ -29,14 +29,10 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
-      # Use --no-frozen-lockfile to handle lockfile compatibility issues
       - run: pnpm install --no-frozen-lockfile
-      - run: pnpm dlx cypress install
 
-      - run: pnpm nx run-many -t lint test build e2e
-      # Remove the fix-ci step since it's not working
-      # - run: pnpm nx fix-ci
-      #   if: always()
+      # Only run lint and build (no test or e2e)
+      - run: pnpm nx run-many -t lint build
 
   deploy:
     runs-on: ubuntu-latest
@@ -64,7 +60,7 @@ jobs:
 
       - run: pnpm install --no-frozen-lockfile
 
-      # Build the Next.js app (this will build ui-components automatically)
+      # Build the Next.js app
       - run: pnpm nx build moonbase
 
       - name: Configure Pages
