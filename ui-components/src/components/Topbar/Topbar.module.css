@@ -1,14 +1,14 @@
 .nav {
   font-family: 'League Spartan', sans-serif;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Allow shark to appear outside nav bounds */
+
   & ul {
     display: flex;
     justify-content: center;
     font-size: clamp(1.3rem, 4vw, 2.4rem);
-    color: white;
     font-weight: 600;
-    gap: clamp(1rem, 8vw, 8rem);
+    gap: clamp(1rem, 8vw, 4rem);
     flex-wrap: wrap;
     padding: 16px 16px 8px 16px;
     position: relative;
@@ -21,40 +21,227 @@
   & a {
     position: relative;
     display: block;
-    letter-spacing: clamp(-1.75px, -0.25vw, -3.5px);
-    text-decoration: none;
-    color: white;
     transition: color 0.3s ease;
+    background: linear-gradient(
+      45deg,
+      #b398f1,
+      #81d4fa,
+      #4fc3f7,
+      #0288d1,
+      #b398f1
+    );
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: gradientStatic 0s ease-in-out;
+  }
+
+  & a:not(:hover) {
+    background: none;
+    -webkit-text-fill-color: inherit;
+    color: inherit;
   }
 
   & a:hover {
-    color: #4fc3f7;
+    animation: gradientMove 2s ease-in-out infinite;
+  }
+
+  & a.active {
+    position: relative;
+  }
+
+  /* Create multiple bubbles around the active link - using identical base animations */
+  & a.active::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #81d4fa, #4fc3f7, #0288d1);
+    box-shadow: 0 0 6px #4fc3f7, 0 0 12px rgba(79, 195, 247, 0.4);
+    top: 40%;
+    left: -25px;
+    animation: bubbleFloatLeft 6s infinite ease-in-out;
+    pointer-events: none;
+    transform: translateY(0) translateX(0) scale(0.7) translateZ(0);
+    opacity: 0;
+  }
+
+  & a.active::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #81d4fa, #4fc3f7, #0288d1);
+    box-shadow: 0 0 2px #4fc3f7, 0 0 4px rgba(79, 195, 247, 0.1);
+    top: 60%;
+    right: -22px;
+    animation: bubbleFloatRight 7s infinite ease-in-out;
+    animation-delay: 3s;
+    pointer-events: none;
+    transform: translateY(0) translateX(0) scale(0.7) translateZ(0);
+    opacity: 0;
+  }
+
+  /* Add more bubbles using box-shadow on the parent li */
+  & li:has(a.active) {
+    position: relative;
+  }
+
+  & li:has(a.active)::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #b3e5fc, #81d4fa);
+    box-shadow: 0 0 4px #4fc3f7, 0 0 8px rgba(79, 195, 247, 0.2);
+    top: 25%;
+    left: 15%;
+    animation: bubbleFloatUp 5.5s infinite ease-in-out;
+    animation-delay: 1.5s;
+    pointer-events: none;
+    transform: translateY(0) scale(0.5) translateZ(0);
+    opacity: 0;
+  }
+
+  & li:has(a.active)::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #b3e5fc, #81d4fa);
+    box-shadow: 0 0 1px #4fc3f7, 0 0 2px rgba(79, 195, 247, 0.1);
+    top: 75%;
+    right: 20%;
+    animation: bubbleFloatUp 6.5s infinite ease-in-out;
+    animation-delay: 4.5s;
+    pointer-events: none;
+    transform: translateY(0) scale(0.5) translateZ(0);
+    opacity: 0;
   }
 }
 
-.shark {
-  position: absolute;
-  width: 60px;
-  height: 40px;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10;
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              left 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  /* Add will-change for better animation performance */
-  will-change: transform, opacity;
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.shark svg {
-  width: 100%;
-  height: 100%;
-  transform-origin: center;
-  transition: transform 0.1s ease-out;
-  /* Optimize SVG rendering */
-  will-change: transform;
+@keyframes gradientStatic {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.navItem {
-  /* Clean, no extra positioning needed */
+@keyframes bubbleFloatLeft {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.7) translateZ(0);
+    opacity: 0;
+    box-shadow: 0 0 2px #4fc3f7, 0 0 4px rgba(79, 195, 247, 0.1);
+  }
+  10% {
+    transform: translateY(-1px) translateX(-0.5px) scale(0.9) translateZ(0);
+    opacity: 0.6;
+    box-shadow: 0 0 4px #4fc3f7, 0 0 8px rgba(79, 195, 247, 0.2);
+  }
+  30% {
+    transform: translateY(-4px) translateX(-1.5px) scale(1.1) translateZ(0);
+    opacity: 1;
+    box-shadow: 0 0 6px #4fc3f7, 0 0 12px rgba(79, 195, 247, 0.4);
+  }
+  70% {
+    transform: translateY(-10px) translateX(-3px) scale(1.05) translateZ(0);
+    opacity: 0.9;
+    box-shadow: 0 0 5px #4fc3f7, 0 0 10px rgba(79, 195, 247, 0.3);
+  }
+  90% {
+    transform: translateY(-15px) translateX(-5px) scale(0.8) translateZ(0);
+    opacity: 0.4;
+    box-shadow: 0 0 3px #4fc3f7, 0 0 6px rgba(79, 195, 247, 0.2);
+  }
+  100% {
+    transform: translateY(-18px) translateX(-6px) scale(0.7) translateZ(0);
+    opacity: 0;
+    box-shadow: 0 0 2px #4fc3f7, 0 0 4px rgba(79, 195, 247, 0.1);
+  }
+}
+
+@keyframes bubbleFloatRight {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.7) translateZ(0);
+    opacity: 0;
+    box-shadow: 0 0 2px #4fc3f7, 0 0 4px rgba(79, 195, 247, 0.1);
+  }
+  10% {
+    transform: translateY(-1px) translateX(0.5px) scale(0.9) translateZ(0);
+    opacity: 0.6;
+    box-shadow: 0 0 4px #4fc3f7, 0 0 8px rgba(79, 195, 247, 0.2);
+  }
+  30% {
+    transform: translateY(-4px) translateX(1.5px) scale(1.1) translateZ(0);
+    opacity: 1;
+    box-shadow: 0 0 6px #4fc3f7, 0 0 12px rgba(79, 195, 247, 0.4);
+  }
+  70% {
+    transform: translateY(-10px) translateX(3px) scale(1.05) translateZ(0);
+    opacity: 0.9;
+    box-shadow: 0 0 5px #4fc3f7, 0 0 10px rgba(79, 195, 247, 0.3);
+  }
+  90% {
+    transform: translateY(-15px) translateX(5px) scale(0.8) translateZ(0);
+    opacity: 0.4;
+    box-shadow: 0 0 3px #4fc3f7, 0 0 6px rgba(79, 195, 247, 0.2);
+  }
+  100% {
+    transform: translateY(-18px) translateX(6px) scale(0.7) translateZ(0);
+    opacity: 0;
+    box-shadow: 0 0 2px #4fc3f7, 0 0 4px rgba(79, 195, 247, 0.1);
+  }
+}
+
+@keyframes bubbleFloatUp {
+  0% {
+    transform: translateY(0) scale(0.5) translateZ(0);
+    opacity: 0;
+    box-shadow: 0 0 1px #4fc3f7, 0 0 2px rgba(79, 195, 247, 0.1);
+  }
+  20% {
+    transform: translateY(-2px) scale(0.8) translateZ(0);
+    opacity: 0.7;
+    box-shadow: 0 0 3px #4fc3f7, 0 0 6px rgba(79, 195, 247, 0.15);
+  }
+  40% {
+    transform: translateY(-6px) scale(1.1) translateZ(0);
+    opacity: 1;
+    box-shadow: 0 0 4px #4fc3f7, 0 0 8px rgba(79, 195, 247, 0.2);
+  }
+  60% {
+    transform: translateY(-10px) scale(1.05) translateZ(0);
+    opacity: 0.8;
+    box-shadow: 0 0 5px #4fc3f7, 0 0 10px rgba(79, 195, 247, 0.25);
+  }
+  80% {
+    transform: translateY(-16px) scale(0.8) translateZ(0);
+    opacity: 0.4;
+    box-shadow: 0 0 3px #4fc3f7, 0 0 6px rgba(79, 195, 247, 0.15);
+  }
+  100% {
+    transform: translateY(-22px) scale(0.5) translateZ(0);
+    opacity: 0;
+    box-shadow: 0 0 1px #4fc3f7, 0 0 2px rgba(79, 195, 247, 0.1);
+  }
 }

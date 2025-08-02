@@ -13,6 +13,9 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
+  experimental: {
+    viewTransition: true
+  },
   trailingSlash: true,
   // Add basePath for GitHub Pages if needed
   basePath: process.env.NODE_ENV === 'production' ? '/moonbase' : '',

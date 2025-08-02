@@ -1,7 +1,10 @@
-import { Topbar } from '@moonbase/ui-components';
-import { League_Spartan } from 'next/font/google'
+import {
+  ApplicationFrame,
+  Topbar,
+} from '@moonbase/ui-components';
+import styles from './page.module.css';
+import { League_Spartan, Inter } from 'next/font/google';
 import './global.css';
-
 
 export const metadata = {
   title: 'Welcome to ',
@@ -12,7 +15,14 @@ const leagueSpartan = League_Spartan({
   subsets: ['latin'],
   weight: ['600', '700'],
   display: 'swap',
-})
+  variable: '--font-league-spartan',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export default function RootLayout({
   children,
@@ -21,9 +31,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={leagueSpartan.className}>
-      <Topbar></Topbar>
-      {children}
+      <body className={`${leagueSpartan.variable} ${inter.variable} h1`}>
+      <ApplicationFrame>
+        {children}
+      </ApplicationFrame>
       </body>
     </html>
   );

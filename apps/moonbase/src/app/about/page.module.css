@@ -1,2 +1,76 @@
 .page {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100vh;
+  padding: 0 32px;
+  gap: 32px;
+}
+
+.imageContainer {
+  position: relative;
+  min-height: 100vh;
+  width: 100%; /* Ensure it has width */
+  justify-self: end; /* Centers the container horizontally within its grid cell */
+  align-self: center; /* Centers the container vertically within its grid cell */
+}
+
+.imageContainer img {
+  object-fit: contain;
+  object-position: right; /* Centers the image within the container */
+}
+
+@media (max-width: 768px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .imageContainer {
+    min-height: 50vh;
+  }
+}
+
+.aboutSection {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  & h2 {
+    font-size: clamp(4rem, 10vw, 6rem);
+    font-variant: all-small-caps;
+    font-weight: 600;
+  }
+  & p {
+    font-family: var(--font-inter), sans-serif;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    &:last-of-type {
+      flex-grow: 1;
+    }
+  }
+}
+
+.socialSection {
+  font-size: clamp(1.3rem, 4vw, 2.4rem);
+  container-type: inline-size;
+  margin-top: 64px;
+  padding-bottom: 32px;
+
+  & ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    & li {
+      display: flex;
+      gap: 8px;
+      & span {
+        font-size: 1rem;
+        align-self: center;
+        padding-bottom: 8px;
+      }
+    }
+  }
 }

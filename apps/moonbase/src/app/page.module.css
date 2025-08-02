@@ -1,23 +1,16 @@
 .page {
-  font-family: 'League Spartan', sans-serif;
-  color: white;
+
   display: grid;
   grid-template-rows: auto 1fr auto;
   align-items: center;
   justify-items: center;
   position: relative;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100%;
   overflow: hidden;
   container-type: inline-size;
   /* GPU acceleration for the whole page */
   transform: translateZ(0);
-
-  & h1 {
-    font-size: clamp(4.3rem, 10vw, 10rem);
-    grid-row: 1;
-    /* Prevent font loading shift */
-    font-display: swap;
-  }
 }
 
 .imageContainer {
@@ -26,14 +19,13 @@
   height: 100%;
   position: relative;
   transform-origin: center;
-  transform: translateY(40px) translateZ(0);
-  /* Optimize for compositing */
+  transform: translateY(180px) scale(1.4) translateZ(0);
   will-change: transform;
 }
 
 .button {
   position: fixed;
-  bottom: 210px;
+  bottom: 115px;
   left: 50%;
   transform: translateX(-50%) translateZ(0);
   background: #2572a9;
@@ -59,121 +51,10 @@
     position: relative;
     z-index: 1;
   }
-
-  @media (max-width: 768px) {
-    bottom: 120px;
-  }
-}
-
-/* Highly optimized plankton */
-.planktonContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-  /* GPU layer promotion */
-  transform: translateZ(0);
-  /* Optimize for many animated children */
-  contain: layout style paint;
-}
-
-.plankton {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #81d4fa, #4fc3f7, #0288d1);
-  /* Simplified box-shadow for better performance */
-  box-shadow: 0 0 6px #4fc3f7, 0 0 12px rgba(79, 195, 247, 0.4);
-  animation:
-    planktonFloat 8s ease-in-out infinite,
-    planktonGlow 3s ease-in-out infinite alternate;
-  /* Optimize GPU acceleration */
-  transform: translateZ(0);
-  will-change: transform, opacity, box-shadow;
-  /* Prevent repaints during animation */
-  contain: layout style paint;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 70%;
-    height: 70%;
-    background: radial-gradient(circle at 30% 30%, #b3e5fc, #81d4fa);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) translateZ(0);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 30%;
-    left: 30%;
-    width: 40%;
-    height: 40%;
-    background: rgba(225, 245, 254, 0.9);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) translateZ(0);
-  }
-}
-
-/* Optimized keyframes with GPU-accelerated properties only */
-@keyframes planktonFloat {
-  0%, 100% {
-    transform: translate3d(0px, 0px, 0) rotate(0deg) scale(1);
-  }
-  25% {
-    transform: translate3d(4px, -6px, 0) rotate(90deg) scale(1.1);
-  }
-  50% {
-    transform: translate3d(-2px, 3px, 0) rotate(180deg) scale(0.9);
-  }
-  75% {
-    transform: translate3d(2px, -3px, 0) rotate(270deg) scale(1.05);
-  }
-}
-
-@keyframes planktonGlow {
-  0% {
-    opacity: 0.2;
-    box-shadow: 0 0 4px #4fc3f7, 0 0 8px rgba(79, 195, 247, 0.3);
-  }
-  50% {
-    opacity: 0.8;
-    box-shadow: 0 0 8px #4fc3f7, 0 0 16px rgba(79, 195, 247, 0.6);
-  }
-  100% {
-    opacity: 0.4;
-    box-shadow: 0 0 6px #4fc3f7, 0 0 12px rgba(79, 195, 247, 0.4);
-  }
-}
-
-/* Reduced nth-child selectors for better CSS performance */
-.plankton:nth-child(even) {
-  animation-delay: -1s, -0.5s;
-  animation-duration: 9s, 4s;
-}
-
-.plankton:nth-child(3n) {
-  animation-delay: -2s, -1s;
-  animation-duration: 7s, 3.5s;
-}
-
-.plankton:nth-child(5n) {
-  animation-delay: -4s, -2s;
-  animation-duration: 6s, 4.5s;
 }
 
 /* Respect user preferences */
 @media (prefers-reduced-motion: reduce) {
-  .plankton {
-    animation: planktonGlow 3s ease-in-out infinite alternate;
-  }
-
   .button {
     transition: none;
   }
@@ -183,25 +64,22 @@
   }
 }
 
-/* Performance optimizations for mobile */
-@media (max-width: 768px) {
-  .plankton {
-    animation-duration: 12s, 4s;
-    /* Reduce box-shadow complexity on mobile */
-    box-shadow: 0 0 4px #4fc3f7;
-  }
-
-  .planktonContainer {
-    /* Further optimize for mobile GPUs */
-    backface-visibility: hidden;
-    perspective: 1000px;
-  }
+.mantaRaySeparator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 32px 0;
+  opacity: 0.6;
 }
 
-/* High refresh rate displays optimization */
-@media (min-resolution: 120dpi) {
-  .plankton {
-    /* Smoother animations on high refresh displays */
-    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
+.mantaRayIcon {
+  width: 300px;
+  height: 25px;
+  color: currentColor;
+  transition: all 0.3s ease;
+}
+
+.mantaRaySeparator:hover .mantaRayIcon {
+  opacity: 0.8;
+  transform: scale(1.05);
 }

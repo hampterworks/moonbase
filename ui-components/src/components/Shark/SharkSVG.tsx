@@ -1,4 +1,4 @@
-const Shark = () => {
+const SharkSVG = () => {
   return (
     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 851.41 549.92">
       <title>shark</title>
@@ -73,4 +73,4 @@ const Shark = () => {
   )
 }
 
-export default Shark
+export default SharkSVG

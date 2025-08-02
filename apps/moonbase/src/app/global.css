@@ -124,5 +124,7 @@ body {
   background-size: cover;
   background-attachment: fixed; /* Keeps it centered during resize */
   filter: contrast(0.9) brightness(1.1);
-  overflow: hidden;
+  color: #fffdfd;
+
+  font-family: var(--font-league-spartan), sans-serif;
 }
