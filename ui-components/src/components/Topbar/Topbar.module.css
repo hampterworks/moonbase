@@ -1,0 +1,60 @@
+.nav {
+  font-family: 'League Spartan', sans-serif;
+  position: relative;
+  overflow: hidden;
+  & ul {
+    display: flex;
+    justify-content: center;
+    font-size: clamp(1.3rem, 4vw, 2.4rem);
+    color: white;
+    font-weight: 600;
+    gap: clamp(1rem, 8vw, 8rem);
+    flex-wrap: wrap;
+    padding: 16px 16px 8px 16px;
+    position: relative;
+  }
+
+  & li {
+    position: relative;
+  }
+
+  & a {
+    position: relative;
+    display: block;
+    letter-spacing: clamp(-1.75px, -0.25vw, -3.5px);
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+  & a:hover {
+    color: #4fc3f7;
+  }
+}
+
+.shark {
+  position: absolute;
+  width: 60px;
+  height: 40px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              left 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Add will-change for better animation performance */
+  will-change: transform, opacity;
+}
+
+.shark svg {
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transition: transform 0.1s ease-out;
+  /* Optimize SVG rendering */
+  will-change: transform;
+}
+
+.navItem {
+  /* Clean, no extra positioning needed */
+}

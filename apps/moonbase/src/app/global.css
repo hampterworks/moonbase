@@ -118,3 +118,11 @@ body {
   height: 100%;
   width: 100%;
 }
+
+body {
+  background: url("/bg.png") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed; /* Keeps it centered during resize */
+  filter: contrast(0.9) brightness(1.1);
+  overflow: hidden;
+}

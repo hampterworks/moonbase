@@ -28,16 +28,19 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "@moonbase/moonbase:build",
-        "dev": true
+        "dev": true,
+        "port": 3000
       },
       "configurations": {
         "development": {
           "buildTarget": "@moonbase/moonbase:build:development",
-          "dev": true
+          "dev": true,
+          "port": 3000
         },
         "production": {
           "buildTarget": "@moonbase/moonbase:build:production",
-          "dev": false
+          "dev": false,
+          "port": 3000
         }
       }
     },
@@ -45,14 +48,16 @@
       "executor": "@nx/next:server",
       "options": {
         "buildTarget": "@moonbase/moonbase:build",
-        "dev": true
+        "dev": true,
+        "port": 3000
       }
     },
     "start": {
       "executor": "@nx/next:server",
       "options": {
         "buildTarget": "@moonbase/moonbase:build",
-        "dev": false
+        "dev": false,
+        "port": 3000
       },
       "dependsOn": ["build"]
     },
