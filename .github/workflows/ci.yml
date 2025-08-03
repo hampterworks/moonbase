@@ -39,14 +39,17 @@ jobs:
       - run: pnpm nx build ui-components
       - run: pnpm nx build @moonbase/moonbase --configuration=production
 
-      # Debug: Check what was created in detail
+      # Debug: Check what was created in both locations
       - name: Debug - Check build output structure
         run: |
-          echo "Contents of .next directory:"
-          find apps/moonbase/out/.next -type f -name "*.html"
+          echo "Contents of out directory:"
+          ls -la apps/moonbase/out/
           echo ""
-          echo "Root files in .next:"
+          echo "Contents of out/.next directory:"
           ls -la apps/moonbase/out/.next/
+          echo ""
+          echo "Image files in both locations:"
+          find apps/moonbase/out -name "*.png" -type f
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
@@ -54,7 +57,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./apps/moonbase/out/.next
+          path: ./apps/moonbase/out
 
       - name: Deploy to GitHub Pages
         id: deployment
