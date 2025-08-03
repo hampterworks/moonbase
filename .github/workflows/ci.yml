@@ -48,8 +48,11 @@ jobs:
           echo "Contents of out/.next directory:"
           ls -la apps/moonbase/out/.next/
           echo ""
-          echo "Image files in both locations:"
-          find apps/moonbase/out -name "*.png" -type f
+          echo "HTML files in .next:"
+          find apps/moonbase/out/.next -name "*.html" -type f
+          echo ""
+          echo "Image files in .next:"
+          find apps/moonbase/out/.next -name "*.png" -type f
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
@@ -57,7 +60,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./apps/moonbase/out
+          path: ./apps/moonbase/out/.next
 
       - name: Deploy to GitHub Pages
         id: deployment
