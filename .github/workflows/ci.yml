@@ -39,8 +39,8 @@ jobs:
       - run: pnpm nx build ui-components
       - run: pnpm nx build @moonbase/moonbase --configuration=production
 
-      # Debug: Check what was created in both locations
-      - name: Debug - Check build output structure
+      # Debug: Check what was created and examine HTML content
+      - name: Debug - Check build output and HTML content
         run: |
           echo "Contents of out directory:"
           ls -la apps/moonbase/out/
@@ -53,6 +53,13 @@ jobs:
           echo ""
           echo "Image files in .next:"
           find apps/moonbase/out/.next -name "*.png" -type f
+          echo ""
+          echo "=== CHECKING HTML CONTENT ==="
+          echo "Index.html img tags:"
+          grep -n "img\|Image\|moonmain\|bg\.png" apps/moonbase/out/.next/index.html || echo "No img tags found"
+          echo ""
+          echo "CSS background references:"
+          grep -n "bg\.png\|moonmain" apps/moonbase/out/.next/_next/static/css/*.css || echo "No CSS files found"
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
