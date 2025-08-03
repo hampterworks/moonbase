@@ -14,15 +14,15 @@ const nextConfig = {
   },
   output: 'export',
   images: {
-    unoptimized: true
+    unoptimized: true,
+    loader: 'custom',
+    loaderFile: './image-loader.js'
   },
   experimental: {
     viewTransition: true
   },
   trailingSlash: true,
-  // Add basePath for GitHub Pages if needed
   basePath: basePath,
-  // Add assetPrefix to ensure all assets (including images) use the correct path
   assetPrefix: basePath,
   transpilePackages: ['@moonbase/ui-components'],
   webpack: (config) => {

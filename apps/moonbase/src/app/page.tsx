@@ -1,13 +1,14 @@
 'use client'
 import Image from 'next/image';
 import styles from './page.module.css';
+import imageLoader from '@/app/imageLoaderFunction';
 
 const Index = () => {
   return (
     <div className={styles.page}>
       <div className={styles.imageWrapper}>
         <Image
-          src="/moonmain.png"
+          src={imageLoader("/moonmain.png")}
           alt="Moon"
           fill
           priority
