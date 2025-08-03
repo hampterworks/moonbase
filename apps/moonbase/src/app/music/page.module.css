@@ -1,2 +1,41 @@
-.page {
+.songRow {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  & span {
+    color: #ebebf4;
+  }
+  & h3 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    font-variant: all-small-caps;
+    font-weight: 600;
+    margin-top: -12px;
+  }
+  & > div {
+    display: flex;
+    gap: 16px;
+  }
 }
+
+.originalSongsSection, .coversSection {
+  & h2 {
+    font-size: clamp(4rem, 10vw, 6rem);
+    font-variant: all-small-caps;
+    font-weight: 600;
+  }
+}
+
+.artistTag {
+  display: block;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+.musicPageContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  padding: 0 32px;
+  gap: 32px;
+}
+

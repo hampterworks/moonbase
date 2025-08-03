@@ -5,7 +5,7 @@ import styles from './page.module.css';
 const Index = () => {
   return (
     <div className={styles.page}>
-      <div className={styles.imageContainer}>
+      <div className={styles.imageWrapper}>
         <Image
           src="/moonmain.png"
           alt="Moon"

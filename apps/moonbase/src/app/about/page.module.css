@@ -1,76 +1,58 @@
-.page {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  height: 100vh;
-  padding: 0 32px;
-  gap: 32px;
-}
-
-.imageContainer {
-  position: relative;
-  min-height: 100vh;
-  width: 100%; /* Ensure it has width */
-  justify-self: end; /* Centers the container horizontally within its grid cell */
-  align-self: center; /* Centers the container vertically within its grid cell */
-}
-
-.imageContainer img {
-  object-fit: contain;
-  object-position: right; /* Centers the image within the container */
-}
-
-@media (max-width: 768px) {
-  .page {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-  }
-
-  .imageContainer {
-    min-height: 50vh;
-  }
-}
-
 .aboutSection {
   padding: 16px;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  & h2 {
-    font-size: clamp(4rem, 10vw, 6rem);
-    font-variant: all-small-caps;
-    font-weight: 600;
-  }
-  & p {
-    font-family: var(--font-inter), sans-serif;
-    line-height: 1.7;
-    margin-bottom: 40px;
-    &:last-of-type {
-      flex-grow: 1;
-    }
-  }
+}
+
+.aboutSection h2 {
+  font-size: clamp(4rem, 10vw, 6rem);
+  font-variant: all-small-caps;
+  font-weight: 600;
+}
+
+.aboutSection p {
+  font-family: var(--font-inter), sans-serif;
+  line-height: 1.7;
+  margin-bottom: 40px;
 }
 
 .socialSection {
-  font-size: clamp(1.3rem, 4vw, 2.4rem);
   container-type: inline-size;
-  margin-top: 64px;
-  padding-bottom: 32px;
+  margin: 64px auto 32px auto;
+  max-width: 1100px;
+  width: 100%;
+}
 
-  & ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 0;
-    margin: 0;
-    justify-content: center;
-    & li {
-      display: flex;
-      gap: 8px;
-      & span {
-        font-size: 1rem;
-        align-self: center;
-        padding-bottom: 8px;
-      }
-    }
+.socialSection ul {
+  display: grid;
+  /* Responsive grid using clamp() - collapses automatically based on available space */
+  grid-template-columns: repeat(auto-fit, minmax(clamp(120px, 20vw, 230px), 1fr));
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  justify-items: center;
+  align-items: center;
+  list-style: none;
+}
+
+.socialLink {
+  text-decoration: none;
+  color: inherit;
+  font-size: calc(
+    clamp(2.3rem, 5vw, 3.8rem) * (1 - var(--row, 0) * 0.2)
+  );
+}
+
+/* Fallback for more control over breakpoints */
+@media (max-width: 900px) {
+  .socialSection ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .socialSection ul {
+    grid-template-columns: 1fr;
   }
 }

@@ -128,3 +128,33 @@ body {
 
   font-family: var(--font-league-spartan), sans-serif;
 }
+
+.pageContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100vh;
+  padding: 0 32px;
+  gap: 32px;
+}
+.imageContainer {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  justify-self: end;
+  align-self: start;
+}
+
+.imageContainer img {
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .imageContainer {
+    min-height: 50vh;
+  }
+}
