@@ -1,6 +1,7 @@
 import styles from './page.module.css';
 import Image from 'next/image';
 import React from 'react';
+import { getImageSrc } from '@/app/imageLoaderFunction';
 
 const atlamoonSongs = {
   original_songs: [
@@ -214,7 +215,7 @@ const Music = () => {
     <main className={styles.musicPageContainer}>
       <section className="imageContainer">
         <Image
-          src="/moonmain.png"
+          src={getImageSrc("/moonmain.png")}
           alt="Moon"
           fill
           priority
@@ -229,8 +230,9 @@ const Music = () => {
           <h2>original songs</h2>
           <div>
             <ul>
-              {atlamoonSongs.original_songs.map((song, index) =>
-                <SongRow key={index} song={song} index={index} />)}
+              {atlamoonSongs.original_songs.map((song, index) => (
+                <SongRow key={index} song={song} index={index} />
+              ))}
             </ul>
           </div>
         </section>
@@ -238,14 +240,15 @@ const Music = () => {
           <h2>song covers</h2>
           <div>
             <ul>
-              {atlamoonSongs.cover_songs.map((song, index) =>
-                <SongRow key={index} song={song} index={index} />)}
+              {atlamoonSongs.cover_songs.map((song, index) => (
+                <SongRow key={index} song={song} index={index} />
+              ))}
             </ul>
           </div>
         </section>
       </div>
     </main>
-  )
+  );
 }
 
 export default Music

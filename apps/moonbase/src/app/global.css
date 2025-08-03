@@ -120,12 +120,11 @@ body {
 }
 
 body {
-  background: url("/bg.png") no-repeat center center;
+  background: var(--bg-image, url("/bg.png")) no-repeat center center;
   background-size: cover;
-  background-attachment: fixed; /* Keeps it centered during resize */
+  background-attachment: fixed;
   filter: contrast(0.9) brightness(1.1);
   color: #fffdfd;
-
   font-family: var(--font-league-spartan), sans-serif;
 }
 

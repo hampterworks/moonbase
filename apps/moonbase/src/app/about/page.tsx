@@ -1,5 +1,6 @@
 import styles from './page.module.css';
 import Image from 'next/image';
+import { getImageSrc } from '@/app/imageLoaderFunction';
 
 const socialLinks = [
   {
@@ -92,10 +93,10 @@ const About = () => {
   };
 
   return (
-    <main className='pageContainer'>
-      <section className='imageContainer'>
+    <main className="pageContainer">
+      <section className="imageContainer">
         <Image
-          src="/moonmain.png"
+          src={getImageSrc("/moonmain.png")}
           alt="Moon"
           fill
           priority
@@ -108,22 +109,22 @@ const About = () => {
       <section className={styles.aboutSection}>
         <h2>About</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-          Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
-          Donec eu libero sit amet quam egestas semper.
-          Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
-          Quisque sit amet est et sapien ullamcorper pharetra.
-          Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.
-          Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci,
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-          Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
-          Donec eu libero sit amet quam egestas semper.
-          Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
-          Quisque sit amet est et sapien ullamcorper pharetra.
-          Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.
-          Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci,
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+          habitant morbi tristique senectus et netus et malesuada fames ac
+          turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+          tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
+          Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque
+          sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi,
+          condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean
+          fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci,
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+          habitant morbi tristique senectus et netus et malesuada fames ac
+          turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+          tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
+          Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque
+          sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi,
+          condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean
+          fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci,
         </p>
         <nav className={styles.socialSection}>
           <ul>
@@ -134,7 +135,9 @@ const About = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialLink}
-                  style={{ '--row': getRowNumber(index) } as React.CSSProperties}
+                  style={
+                    { '--row': getRowNumber(index) } as React.CSSProperties
+                  }
                 >
                   {link.name}
                 </a>
@@ -144,7 +147,7 @@ const About = () => {
         </nav>
       </section>
     </main>
-  )
+  );
 }
 
 export default About

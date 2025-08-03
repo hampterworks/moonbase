@@ -1,8 +1,4 @@
-import {
-  ApplicationFrame,
-  Topbar,
-} from '@moonbase/ui-components';
-import styles from './page.module.css';
+import { ApplicationFrame } from '@moonbase/ui-components';
 import { League_Spartan, Inter } from 'next/font/google';
 import './global.css';
 
@@ -31,10 +27,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${leagueSpartan.variable} ${inter.variable} h1`}>
-      <ApplicationFrame>
-        {children}
-      </ApplicationFrame>
+      <body
+        className={`${leagueSpartan.variable} ${inter.variable} h1`}
+        style={
+          {
+            '--bg-image': `url("${process.env.CUSTOM_BASE_PATH || ''}/bg.png")`,
+          } as React.CSSProperties
+        }
+      >
+        <ApplicationFrame>{children}</ApplicationFrame>
       </body>
     </html>
   );
