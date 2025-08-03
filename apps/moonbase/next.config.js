@@ -14,9 +14,7 @@ const nextConfig = {
   },
   output: 'export',
   images: {
-    unoptimized: true,
-    loader: 'custom',
-    loaderFile: './image-loader.js'
+    unoptimized: true
   },
   experimental: {
     viewTransition: true
@@ -25,6 +23,9 @@ const nextConfig = {
   basePath: basePath,
   assetPrefix: basePath,
   transpilePackages: ['@moonbase/ui-components'],
+  env: {
+    CUSTOM_BASE_PATH: basePath,
+  },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
