@@ -5,6 +5,9 @@ const fs = require('fs');
 // Check if we should use built version or source
 const useBuiltLibrary = fs.existsSync(path.resolve(__dirname, '../../dist/ui-components/index.js'));
 
+const isProd = process.env.NODE_ENV === 'production';
+const basePath = isProd ? '/moonbase' : '';
+
 const nextConfig = {
   nx: {
     svgr: false,
@@ -18,7 +21,9 @@ const nextConfig = {
   },
   trailingSlash: true,
   // Add basePath for GitHub Pages if needed
-  basePath: process.env.NODE_ENV === 'production' ? '/moonbase' : '',
+  basePath: basePath,
+  // Add assetPrefix to ensure all assets (including images) use the correct path
+  assetPrefix: basePath,
   transpilePackages: ['@moonbase/ui-components'],
   webpack: (config) => {
     config.resolve.alias = {
