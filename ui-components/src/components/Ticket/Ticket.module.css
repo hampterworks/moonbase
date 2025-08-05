@@ -1,8 +1,14 @@
-
 .ticketItem {
   border-radius: 16px;
   width: 100%;
   max-width: 800px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ticketItem:hover {
+  transform: translateY(-8px) scale(1.02);
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.4))
+          drop-shadow(0 5px 15px rgba(255, 255, 255, 0.1));
 }
 
 .ticketItemContainer {
@@ -12,13 +18,14 @@
   height: auto;
   background:
     linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(0, 0, 0, 0.1) 5%,
-      rgba(0, 0, 0, 0.4) 15%,
-      rgba(0, 0, 0, 0.2) 60%,
-      transparent 100%
+      to bottom,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.3) 20%,
+      transparent 70%,
+      rgba(0, 0, 0, 0.2) 80%,
+      rgba(0, 0, 0, 0.3) 100%
     ),
+
     var(--background-img) no-repeat center center;
   background-size: auto, cover;
 
@@ -29,14 +36,12 @@
   }
 }
 
-
 .ticketSVGContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
-
 }
 
 .ticketSVG {
@@ -44,9 +49,9 @@
   height: 90%;
 }
 
-
 .stubSVG {
   width: 100%;
+
   & rect {
     height: 20px;
   }
@@ -82,13 +87,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(
-      ellipse 80% 50% at center,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 0.2) 40%,
-      rgba(0, 0, 0, 0) 85%,
-      transparent 100%
-    );
     border-radius: 8px;
     padding: 8px;
     gap: 8px;
@@ -97,8 +95,16 @@
       display: flex;
       gap: 16px;
       margin-bottom: 40px;
+
+      & a {
+        transition: all 0.3s ease;
+      }
     }
   }
+}
+
+.ticketItem:hover .ticketStub a {
+  transform: scale(1.2);
 }
 
 .stubContent {
@@ -119,4 +125,3 @@
     min-width: 0;
   }
 }
-
