@@ -9,6 +9,11 @@
     color: white;
     font-size: clamp(4.4rem, 10vw, 9rem);
     flex-shrink: 0;
+    cursor: default;
+
+    &::selection {
+      background: none;
+    }
   }
 
   & > section {

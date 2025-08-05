@@ -12,6 +12,7 @@ const PlanktonContainer = dynamic(
   { ssr: false }
 );
 
+
 const ApplicationFrame: React.FC<ApplicationFrameProps> = ({children, ...props }) => {
   return <div className={styles.main} {...props}>
     <PlanktonContainer/>

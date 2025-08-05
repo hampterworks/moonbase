@@ -1,0 +1,122 @@
+
+.ticketItem {
+  border-radius: 16px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.ticketItemContainer {
+  display: grid;
+  border-radius: 16px;
+  grid-template-columns: clamp(50px, 10vw, 70px) 1fr clamp(120px, 20vw, 170px);
+  height: auto;
+  background:
+    linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.1) 5%,
+      rgba(0, 0, 0, 0.4) 15%,
+      rgba(0, 0, 0, 0.2) 60%,
+      transparent 100%
+    ),
+    var(--background-img) no-repeat center center;
+  background-size: auto, cover;
+
+  & svg {
+    & rect {
+      fill: white;
+    }
+  }
+}
+
+
+.ticketSVGContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+}
+
+.ticketSVG {
+  width: 60%;
+  height: 90%;
+}
+
+
+.stubSVG {
+  width: 100%;
+  & rect {
+    height: 20px;
+  }
+}
+
+.ticketItemContent {
+  padding: 16px 16px 16px 0;
+  line-height: 0.8;
+  font-variant: all-small-caps;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+
+  & h3 {
+    font-size: clamp(2rem, 5vw, 3.6rem);
+  }
+}
+
+.ticketItemTime {
+  display: flex;
+  margin-top: 8px;
+}
+
+.ticketStub {
+  border-left: 4px dotted #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 8px;
+  font-variant: all-small-caps;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(
+      ellipse 80% 50% at center,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.2) 40%,
+      rgba(0, 0, 0, 0) 85%,
+      transparent 100%
+    );
+    border-radius: 8px;
+    padding: 8px;
+    gap: 8px;
+
+    & > div {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.stubContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.songInfo {
+  margin-top: 24px;
+  display: flex;
+  gap: clamp(8px, 4vw, 32px);
+  flex-wrap: wrap;
+  & div {
+    display: flex;
+    gap: clamp(4px, 1vw, 8px);
+    align-items: center;
+    min-width: 0;
+  }
+}
+

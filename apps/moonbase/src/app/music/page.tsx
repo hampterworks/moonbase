@@ -2,6 +2,7 @@ import styles from './page.module.css';
 import Image from 'next/image';
 import React from 'react';
 import { getImageSrc } from '@/app/imageLoaderFunction';
+import { SpotifyIcon, Ticket, YoutubeIcon } from '@moonbase/ui-components';
 
 const atlamoonSongs = {
   original_songs: [
@@ -10,6 +11,7 @@ const atlamoonSongs = {
       year: 2025,
       language: 'en',
       time: '2:26',
+      backgroundImg: '/waters.png',
       links: [
         {
           type: 'youtube',
@@ -24,6 +26,10 @@ const atlamoonSongs = {
     {
       title: 'Chokehold',
       year: 2024,
+      language: 'en',
+      time: '2:55',
+      feature: 'Ft. Karl Francis',
+      backgroundImg: '/chokehold.png',
       links: [
         {
           type: 'youtube',
@@ -38,6 +44,9 @@ const atlamoonSongs = {
     {
       title: 'You Bring Me Life',
       year: 2024,
+      language: 'en',
+      time: '3:28',
+      backgroundImg: '/life.png',
       links: [
         {
           type: 'spotify',
@@ -45,75 +54,16 @@ const atlamoonSongs = {
         },
       ],
     },
-  ],
-  cover_songs: [
     {
-      title: 'How Do You Sleep',
-      original_artist: 'Sam Smith',
+      title: 'Poison',
+      year: 2021,
+      language: 'en',
+      time: '4:36',
+      backgroundImg: '/poison.png',
       links: [
         {
-          type: 'youtube',
-          url: 'https://www.youtube.com/watch?v=euPDVMthx80',
-        },
-      ],
-    },
-    {
-      title: 'MAMMAMIA',
-      original_artist: null,
-      links: [
-        {
-          type: 'youtube',
-          url: 'https://www.youtube.com/watch?v=tQRMasH4J28',
-        },
-      ],
-    },
-    {
-      title: 'Starlight',
-      original_artist: 'Muse',
-      links: [
-        {
-          type: 'youtube',
-          url: 'https://www.youtube.com/watch?v=JIMFCFqhx9I',
-        },
-      ],
-    },
-    {
-      title: "I'd Rather Pretend",
-      original_artist: 'Bryant Barnes',
-      links: [
-        {
-          type: 'youtube',
-          url: 'https://www.youtube.com/watch?v=ik3onswRgjY',
-        },
-      ],
-    },
-    {
-      title: "Can't Help Falling in Love",
-      original_artist: 'Elvis Presley',
-      links: [
-        {
-          type: 'youtube',
-          url: 'https://www.youtube.com/watch?v=etK7W4WqzxU',
-        },
-      ],
-    },
-    {
-      title: 'Stay with Me (Acoustic)',
-      original_artist: null,
-      links: [
-        {
-          type: 'youtube',
-          url: 'https://www.youtube.com/watch?v=t6pCH4V3zDI',
-        },
-      ],
-    },
-    {
-      title: 'Almost (Anime Cover)',
-      original_artist: null,
-      links: [
-        {
-          type: 'youtube',
-          url: 'https://www.youtube.com/watch?v=4R4tMG40TQo',
+          type: 'spotify',
+          url: 'https://open.spotify.com/artist/72IVayeIvKRwJgbgxQzxZZ',
         },
       ],
     },
@@ -180,7 +130,16 @@ const Music = () => {
           <div>
             <ul>
               {atlamoonSongs.original_songs.map((song, index) => (
-                <SongRow key={index} song={song} index={index} />
+                <Ticket
+                  key={song.title}
+                  year={song.year}
+                  title={song.title}
+                  language='en'
+                  time={song.time}
+                  links={song.links}
+                  feature={song.feature}
+                  backgroundImg={song.backgroundImg}
+                />
               ))}
             </ul>
           </div>
@@ -188,11 +147,11 @@ const Music = () => {
         <section className={styles.coversSection}>
           <h2>song covers</h2>
           <div>
-            <ul>
-              {atlamoonSongs.cover_songs.map((song, index) => (
-                <SongRow key={index} song={song} index={index} />
-              ))}
-            </ul>
+            {/*<ul>*/}
+            {/*  {atlamoonSongs.cover_songs.map((song, index) => (*/}
+            {/*    <SongRow key={index} song={song} index={index} />*/}
+            {/*  ))}*/}
+            {/*</ul>*/}
           </div>
         </section>
       </div>

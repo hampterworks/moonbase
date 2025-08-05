@@ -19,8 +19,8 @@ const links = [
     href: '/music',
   },
   {
-    label: 'MERCH',
-    href: '/merch',
+    label: 'LINKS',
+    href: '/links',
   },
 ];
 

@@ -77,10 +77,10 @@ const About = () => {
   };
 
   return (
-    <main className="pageContainer">
+    <main className='pageContainer'>
       <section className="imageContainer">
         <Image
-          src={getImageSrc("/moonmain.png")}
+          src={getImageSrc('/moonmain.png')}
           alt="Moon"
           fill
           priority
@@ -110,25 +110,6 @@ const About = () => {
           condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean
           fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci,
         </p>
-        <nav className={styles.socialSection}>
-          <ul>
-            {socialLinks.map((link, index) => (
-              <li key={link.name}>
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                  style={
-                    { '--row': getRowNumber(index) } as React.CSSProperties
-                  }
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
       </section>
     </main>
   );

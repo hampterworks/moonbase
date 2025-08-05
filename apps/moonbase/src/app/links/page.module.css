@@ -1,0 +1,74 @@
+.musicPageContainer {
+  height: 100vh;
+  gap: 32px;
+}
+
+.socialLinks {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 64px;
+  margin-top: 32px;
+}
+
+.socialLinks > ul {
+  display: flex;
+  gap: clamp(12px, 2vw, 20px);
+  justify-content: center;
+  flex-wrap: wrap;
+  line-height: 1.3;
+  & div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.socialLinks ul:nth-child(1) {
+  font-size: clamp(2.5rem, 4.5vw, 5rem);
+  & span {
+    font-size: 2rem;
+  }
+}
+
+.socialLinks ul:nth-child(2) {
+  font-size: clamp(2.2rem, 3vw, 4rem);
+  margin-top: -8px;
+}
+
+.socialLinks ul:nth-child(3) {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+
+.socialLinks a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: transform 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.socialLinks a:hover {
+  transform: scale(1.05);
+}
+
+/* Tablet breakpoint */
+@media (max-width: 768px) {
+  .socialLinks > ul {
+    line-height: 1;
+  }
+
+  .socialLinks ul:nth-child(1) {
+    font-size: clamp(1.75rem, 3vw, 4rem);
+  }
+
+  .socialLinks ul:nth-child(2) {
+    font-size: clamp(1.4rem, 2vw, 3rem);
+  }
+
+  .socialLinks ul:nth-child(3) {
+    font-size: clamp(1.1rem, 3vw, 3rem);
+  }
+}

@@ -15,7 +15,11 @@
     gap: 16px;
   }
 }
-
+.originalSongsSection ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 .originalSongsSection, .coversSection {
   & h2 {
     font-size: clamp(4rem, 10vw, 6rem);
@@ -31,7 +35,7 @@
   margin-bottom: 8px;
 }
 
-.merchPageContainer {
+.musicPageContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 100vh;

@@ -2,7 +2,6 @@ import styles from './page.module.css';
 import Image from 'next/image';
 import React from 'react';
 import { getImageSrc } from '@/app/imageLoaderFunction';
-import { SpotifyIcon, YoutubeIcon } from '@/app/music/page';
 
 const merchLinks = [
   {
@@ -45,9 +44,43 @@ const merchLinks = [
   },
 ]
 
-const Merch = () => {
+const Links = () => {
   return (
-    <main className={styles.merchPageContainer}>
+    <main className={styles.linksPageContainer}>
+      <section>
+
+        <nav className={styles.socialLinks}>
+          <ul>
+            <a>
+              TWITCH
+            </a>
+            <a>
+              YOUTUBE
+            </a>
+            <a>
+              SPOTIFY
+            </a>
+            <a>
+              AMAZON
+            </a>
+          </ul>
+          <ul>
+            <a>HUATGG</a>
+            <a>THRONE</a>
+            <a>UMUMARKET</a>
+            <a>VGEN</a>
+            <a>ROGUE</a>
+            <a>KO-FI</a>
+          </ul>
+          <ul>
+            <a>INSTAGRAM</a>
+            <a>TWITTER</a>
+            <a>TIKTOK</a>
+            <a>BANDLAB</a>
+            <a>Discord</a>
+          </ul>
+        </nav>
+      </section>
       <section className="imageContainer">
         <Image
           src={getImageSrc("/moonmain.png")}
@@ -60,15 +93,8 @@ const Merch = () => {
           }}
         />
       </section>
-      <section>
-        <nav>
-          <ul>
-
-          </ul>
-        </nav>
-      </section>
     </main>
   );
 }
 
-export default Merch
+export default Links
