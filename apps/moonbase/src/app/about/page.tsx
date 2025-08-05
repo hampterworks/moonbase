@@ -6,82 +6,66 @@ const socialLinks = [
   {
     name: 'TWITCH',
     url: 'https://www.twitch.tv/atlamoon',
-    tier: 'headliner'
   },
   {
     name: 'YOUTUBE',
     url: 'https://www.youtube.com/channel/UCgJAnRBvrfScomnp3F45B5w',
-    tier: 'headliner'
   },
   {
     name: 'SPOTIFY',
     url: 'https://open.spotify.com/artist/72IVayeIvKRwJgbgxQzxZZ',
-    tier: 'main'
   },
   {
     name: 'AMAZON',
     url: 'https://music.amazon.com/artists/B0DNSHMX5Q/atlamoon',
-    tier: 'main'
   },
   {
     name: 'APPLE',
     url: 'https://music.apple.com/za/artist/atlamoon/1781142958',
-    tier: 'main'
   },
   {
     name: 'UMUMARKET',
     url: 'https://uwumarket.us/collections/atlamoon',
-    tier: 'main'
   },
   {
     name: 'HUATGG',
     url: 'https://huat.gg/collections/atlamoon',
-    tier: 'main'
   },
   {
     name: 'ROGUE',
     url: 'https://uwumarket.us/collections/atlamoon',
-    tier: 'main'
   },
   {
     name: 'VGEN',
     url: 'https://vgen.co/AtlaMoon',
-    tier: 'support'
   },
   {
     name: 'KO-FI',
     url: 'https://ko-fi.com/atlamoon',
-    tier: 'main'
   },
   {
     name: 'THRONE',
     url: 'https://throne.com/atlamoon',
-    tier: 'main'
   },
   {
     name: 'INSTAGRAM',
     url: 'https://www.instagram.com/atlamoonvt/',
-    tier: 'support'
   },
   {
     name: 'TWITTER',
     url: 'https://x.com/AtlaMoonn',
-    tier: 'support'
   },
   {
     name: 'TIKTOK',
     url: 'https://www.tiktok.com/@AtlaMoon',
-    tier: 'support'
   },
   {
     name: 'BANDLAB',
     url: 'https://www.bandlab.com/atlamoon',
-    tier: 'support'
   },
   {
     name: 'Discord',
     url: 'https://discord.com/invite/SfzETnY',
-    tier: 'support'
   },
 ];
 
