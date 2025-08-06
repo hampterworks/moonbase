@@ -79,6 +79,10 @@ const atlamoonSongs = {
       backgroundImg: '/poison.png',
       links: [
         {
+          type: 'youtube',
+          url: 'https://youtu.be/5OC7foAhpZA?si=fx9WLXQIeRqAc_Vd',
+        },
+        {
           type: 'spotify',
           url: 'https://open.spotify.com/artist/72IVayeIvKRwJgbgxQzxZZ',
         },
