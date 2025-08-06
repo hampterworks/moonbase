@@ -4,6 +4,7 @@ import './global.css';
 import { getImageSrc } from '@/app/imageLoaderFunction';
 
 export const metadata = {
+  metadataBase: new URL('https://hampterworks.github.io/moonbase/'),
   title: 'Atlamoon',
   description: 'Hi im Atlamoon a Musician, producer, singer and Twitch streamer.',
   openGraph: {
