@@ -42,7 +42,7 @@ const Links = () => {
             <a>TWITTER</a>
             <a>TIKTOK</a>
             <a>BANDLAB</a>
-            <a>Discord</a>
+            <a>DISCORD</a>
           </ul>
         </nav>
       </section>
