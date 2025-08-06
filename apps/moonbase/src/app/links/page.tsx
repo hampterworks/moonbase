@@ -31,15 +31,15 @@ const Links = () => {
           </ul>
           <ul>
             <a>HUATGG</a>
-            <a>THRONE</a>
             <a>UMUMARKET</a>
             <a>VGEN</a>
             <a>ROGUE</a>
             <a>KO-FI</a>
+            <a>THRONE</a>
           </ul>
           <ul>
-            <a>INSTAGRAM</a>
             <a>TWITTER</a>
+            <a>INSTAGRAM</a>
             <a>TIKTOK</a>
             <a>BANDLAB</a>
             <a>DISCORD</a>
