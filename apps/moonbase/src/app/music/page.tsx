@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 import { getImageSrc } from '@/app/imageLoaderFunction';
 import { Ticket } from '@moonbase/ui-components';
+import { Metadata } from 'next';
 
 const atlamoonSongs = {
   original_songs: [
@@ -11,7 +12,7 @@ const atlamoonSongs = {
       year: 2025,
       language: 'en',
       time: '2:26',
-      backgroundImg: '/waters.png',
+      backgroundImg: getImageSrc('/waters.png'),
       links: [
         {
           type: 'youtube',
@@ -29,7 +30,7 @@ const atlamoonSongs = {
       language: 'en',
       time: '2:55',
       feature: 'Ft. Karl Francis',
-      backgroundImg: '/chokehold.png',
+      backgroundImg: getImageSrc('/chokehold.png'),
       links: [
         {
           type: 'youtube',
@@ -46,7 +47,7 @@ const atlamoonSongs = {
       year: 2024,
       language: 'en',
       time: '3:28',
-      backgroundImg: '/life.png',
+      backgroundImg: getImageSrc('/life.png'),
       links: [
         {
           type: 'youtube',
@@ -63,7 +64,7 @@ const atlamoonSongs = {
       year: 2024,
       language: 'en',
       time: '3:55',
-      backgroundImg: '/screen.png',
+      backgroundImg: getImageSrc('/screen.png'),
       links: [
         {
           type: 'youtube',
@@ -76,7 +77,7 @@ const atlamoonSongs = {
       year: 2021,
       language: 'en',
       time: '4:36',
-      backgroundImg: '/poison.png',
+      backgroundImg: getImageSrc('/poison.png'),
       links: [
         {
           type: 'youtube',
@@ -90,6 +91,11 @@ const atlamoonSongs = {
     },
   ],
 };
+
+export const metadata: Metadata = {
+  title: 'Music - Atlamoon',
+  description: 'Discover Atlamoon\'s latest tracks',
+}
 
 const Music = () => {
   return (

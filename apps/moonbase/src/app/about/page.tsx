@@ -1,81 +1,14 @@
 import styles from './page.module.css';
 import Image from 'next/image';
 import { getImageSrc } from '@/app/imageLoaderFunction';
+import { Metadata } from 'next';
 
-const socialLinks = [
-  {
-    name: 'TWITCH',
-    url: 'https://www.twitch.tv/atlamoon',
-  },
-  {
-    name: 'YOUTUBE',
-    url: 'https://www.youtube.com/channel/UCgJAnRBvrfScomnp3F45B5w',
-  },
-  {
-    name: 'SPOTIFY',
-    url: 'https://open.spotify.com/artist/72IVayeIvKRwJgbgxQzxZZ',
-  },
-  {
-    name: 'AMAZON',
-    url: 'https://music.amazon.com/artists/B0DNSHMX5Q/atlamoon',
-  },
-  {
-    name: 'APPLE',
-    url: 'https://music.apple.com/za/artist/atlamoon/1781142958',
-  },
-  {
-    name: 'UMUMARKET',
-    url: 'https://uwumarket.us/collections/atlamoon',
-  },
-  {
-    name: 'HUATGG',
-    url: 'https://huat.gg/collections/atlamoon',
-  },
-  {
-    name: 'ROGUE',
-    url: 'https://uwumarket.us/collections/atlamoon',
-  },
-  {
-    name: 'VGEN',
-    url: 'https://vgen.co/AtlaMoon',
-  },
-  {
-    name: 'KO-FI',
-    url: 'https://ko-fi.com/atlamoon',
-  },
-  {
-    name: 'THRONE',
-    url: 'https://throne.com/atlamoon',
-  },
-  {
-    name: 'INSTAGRAM',
-    url: 'https://www.instagram.com/atlamoonvt/',
-  },
-  {
-    name: 'TWITTER',
-    url: 'https://x.com/AtlaMoonn',
-  },
-  {
-    name: 'TIKTOK',
-    url: 'https://www.tiktok.com/@AtlaMoon',
-  },
-  {
-    name: 'BANDLAB',
-    url: 'https://www.bandlab.com/atlamoon',
-  },
-  {
-    name: 'Discord',
-    url: 'https://discord.com/invite/SfzETnY',
-  },
-];
+export const metadata: Metadata = {
+  title: 'About - Atlamoon',
+  description: 'Learn more about Atlamoon',
+}
 
 const About = () => {
-  const itemsPerRow = 4; // Now 4 items per row
-
-  const getRowNumber = (index: number) => {
-    return Math.floor(index / itemsPerRow);
-  };
-
   return (
     <main className='pageContainer'>
       <section className="imageContainer">

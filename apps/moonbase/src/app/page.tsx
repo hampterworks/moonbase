@@ -1,7 +1,13 @@
-'use client'
 import Image from 'next/image';
 import styles from './page.module.css';
 import { getImageSrc } from '@/app/imageLoaderFunction';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home - Atlamoon',
+  description: 'Welcome to Atlamoon - Musician, producer, singer and Twitch streamer.',
+}
+
 
 const Index = () => {
   return (
