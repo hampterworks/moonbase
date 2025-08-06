@@ -13,11 +13,11 @@ export const metadata = {
   openGraph: {
     title: 'Atlamoon - Musician & Twitch Streamer',
     description: 'Welcome to Atlamoon - Musician, producer, singer and Twitch streamer.',
-    url: 'https://atlamoon.com',
+    url: 'https://hampterworks.github.io/moonbase/',
     siteName: 'Atlamoon',
     images: [
       {
-        url: getImageSrc('/rimunrimun.png'),
+        url: '/rimunrimun.png',
         width: 500,
         height: 500,
         alt: 'Atlamoon',
