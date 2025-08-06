@@ -7,6 +7,9 @@ export const metadata = {
   metadataBase: new URL('https://hampterworks.github.io/moonbase/'),
   title: 'Atlamoon',
   description: 'Hi im Atlamoon a Musician, producer, singer and Twitch streamer.',
+  icons: {
+    icon: getImageSrc('/favicon.ico'),
+  },
   openGraph: {
     title: 'Atlamoon - Musician & Twitch Streamer',
     description: 'Welcome to Atlamoon - Musician, producer, singer and Twitch streamer.',
