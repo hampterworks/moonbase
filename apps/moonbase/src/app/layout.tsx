@@ -30,7 +30,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Atlamoon - Musician & Twitch Streamer',
     description: 'Welcome to Atlamoon - Musician, producer, singer and Twitch streamer.',
-    images: [getImageSrc('/rimunrimun.png')],
+    images: ['/rimunrimun.png'],
   }
 }
 
