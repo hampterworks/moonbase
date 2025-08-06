@@ -1,45 +1,94 @@
-.songRow {
-  margin-bottom: 16px;
-  padding-bottom: 16px;
-  & span {
-    color: #ebebf4;
-  }
-  & h3 {
-    font-size: clamp(2rem, 8vw, 3rem);
-    font-variant: all-small-caps;
-    font-weight: 600;
-    margin-top: -12px;
-  }
-  & > div {
-    display: flex;
-    gap: 16px;
-  }
-}
 .originalSongsSection ul {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
-.originalSongsSection, .coversSection {
-  & h2 {
-    font-size: clamp(4rem, 10vw, 6rem);
-    font-variant: all-small-caps;
-    font-weight: 600;
-  }
-}
-
-.artistTag {
-  display: block;
-  font-size: clamp(1rem, 4vw, 1.2rem);
-  margin-top: -8px;
-  margin-bottom: 8px;
-}
 
 .musicPageContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1fr);
+  margin: 0 auto;
   height: 100vh;
+  width: 80%;
   padding: 0 32px;
   gap: 32px;
+  & h2{
+    font-size: clamp(3rem, 15cqw, 7rem);
+    font-variant: all-small-caps;
+    font-weight: 600;
+    margin-bottom: 16px;
+    white-space: nowrap;
+  }
 }
 
+.videoSection {
+  margin-top: 32px;
+  grid-column: 1 / 3;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.originalSongsSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  min-width: 0;
+  container-type: inline-size;
+}
+
+.videoContainer {
+  margin-bottom: 32px;
+  & iframe {
+    width: 500px;
+    height: 320px;
+  }
+}
+
+.musicPageContainer .imageContainer {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  top: 100px;
+  min-width: 280px;
+  contain: layout style;
+}
+
+/* Add responsive breakpoint for tablets and mobile */
+@media (max-width: 1024px) {
+  .musicPageContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: auto;
+    gap: 16px;
+  }
+
+  .musicPageContainer .imageContainer {
+    height: 50vh;
+  }
+
+  .videoSection {
+    grid-column: 1;
+  }
+
+  .videoContainer iframe {
+    width: 100%;
+    max-width: 500px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .musicPageContainer {
+    width: 95%;
+    padding: 0 16px;
+  }
+
+  .musicPageContainer .imageContainer {
+    height: 40vh;
+  }
+}

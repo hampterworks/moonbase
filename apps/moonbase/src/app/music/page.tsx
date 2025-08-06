@@ -2,7 +2,7 @@ import styles from './page.module.css';
 import Image from 'next/image';
 import React from 'react';
 import { getImageSrc } from '@/app/imageLoaderFunction';
-import { SpotifyIcon, Ticket, YoutubeIcon } from '@moonbase/ui-components';
+import { Ticket } from '@moonbase/ui-components';
 
 const atlamoonSongs = {
   original_songs: [
@@ -49,8 +49,25 @@ const atlamoonSongs = {
       backgroundImg: '/life.png',
       links: [
         {
+          type: 'youtube',
+          url: 'https://youtu.be/iBaQyqmU-28?si=FjnWtnalFF18KUWD',
+        },
+        {
           type: 'spotify',
           url: 'https://open.spotify.com/artist/72IVayeIvKRwJgbgxQzxZZ',
+        },
+      ],
+    },
+    {
+      title: 'On my screen',
+      year: 2024,
+      language: 'en',
+      time: '3:55',
+      backgroundImg: '/screen.png',
+      links: [
+        {
+          type: 'youtube',
+          url: 'https://youtu.be/t22vTOK-Z5Y?si=jOlGwVUXHMF9v6Nu',
         },
       ],
     },
@@ -68,53 +85,14 @@ const atlamoonSongs = {
       ],
     },
   ],
-}
-
-export type Link = {
-  type: string
-  url: string
-}
-
-type SongRowProps = {
-  song: {
-    title: string
-    original_artist?: string | null
-    year?: number
-    links: Link[]
-  }
-  index: number
-}
-
-const SongRow = ({ song, index }: SongRowProps) => {
-  return <li key={index} className={styles.songRow}>
-    {song.year && <span>{song.year}</span>}
-    <h3>{song.title}</h3>
-    {song.original_artist && <span className={styles.artistTag}>{song.original_artist}</span>}
-    <div>
-      {
-        song.links.map((link, linkIndex) => (
-          <a
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            key={linkIndex}
-          >
-            {
-              link.type === 'youtube' ? <YoutubeIcon/> : <SpotifyIcon/>
-            }
-          </a>
-        ))
-      }
-    </div>
-  </li>
-}
+};
 
 const Music = () => {
   return (
     <main className={styles.musicPageContainer}>
-      <section className="imageContainer">
+      <section className={styles.imageContainer}>
         <Image
-          src={getImageSrc("/moonmain.png")}
+          src={getImageSrc('/moonmain.png')}
           alt="Moon"
           fill
           priority
@@ -124,39 +102,40 @@ const Music = () => {
           }}
         />
       </section>
-      <div>
-        <section className={styles.originalSongsSection}>
-          <h2>original songs</h2>
-          <div>
-            <ul>
-              {atlamoonSongs.original_songs.map((song, index) => (
-                <Ticket
-                  key={song.title}
-                  year={song.year}
-                  title={song.title}
-                  language='en'
-                  time={song.time}
-                  links={song.links}
-                  feature={song.feature}
-                  backgroundImg={song.backgroundImg}
-                />
-              ))}
-            </ul>
-          </div>
-        </section>
-        <section className={styles.coversSection}>
-          <h2>song covers</h2>
-          <div>
-            {/*<ul>*/}
-            {/*  {atlamoonSongs.cover_songs.map((song, index) => (*/}
-            {/*    <SongRow key={index} song={song} index={index} />*/}
-            {/*  ))}*/}
-            {/*</ul>*/}
-          </div>
-        </section>
-      </div>
+      <section className={styles.originalSongsSection}>
+        <h2>original songs</h2>
+        <div>
+          <ul>
+            {atlamoonSongs.original_songs.map((song, index) => (
+              <Ticket
+                key={song.title}
+                year={song.year}
+                title={song.title}
+                language="en"
+                time={song.time}
+                links={song.links}
+                feature={song.feature}
+                backgroundImg={song.backgroundImg}
+              />
+            ))}
+          </ul>
+        </div>
+      </section>
+      <section className={styles.videoSection}>
+        <h2>song covers</h2>
+        <div className={styles.videoContainer}>
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/videoseries?si=rij9xGsV4AHzglul&amp;list=PL0ioG6SjHh9UgcreBq2HGhzwAL1KuBlqT"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </section>
     </main>
   );
-}
+};
 
-export default Music
+export default Music;
