@@ -1,8 +1,15 @@
+.aboutPageContainer {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1fr);
+  margin: 0 auto 128px auto;
+  width: 80%;
+  padding: 0 32px;
+  gap: 32px;
+}
+
 .aboutSection {
-  padding: 16px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 
 .aboutSection h2 {
@@ -65,6 +72,15 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@media (max-width: 768px) {
+  .aboutPageContainer {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    width: 100%;
+  }
+}
+
 
 @media (max-width: 480px) {
   .socialSection ul {

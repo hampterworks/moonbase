@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 import { getImageSrc } from '@/app/imageLoaderFunction';
 import { Metadata } from 'next';
+import { businessLinks, socialLinks, streamingLinks } from '../../../data/linksData';
 
 export const metadata: Metadata = {
   title: 'Links - Atlamoon',
@@ -13,36 +14,24 @@ const Links = () => {
   return (
     <main className={styles.linksPageContainer}>
       <section>
-
         <nav className={styles.socialLinks}>
           <ul>
-            <a>
-              TWITCH
-            </a>
-            <a>
-              YOUTUBE
-            </a>
-            <a>
-              SPOTIFY
-            </a>
-            <a>
-              AMAZON
-            </a>
+            {
+              streamingLinks.map((link, index) =>
+                <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.name}</a>)
+            }
           </ul>
           <ul>
-            <a>HUATGG</a>
-            <a>UMUMARKET</a>
-            <a>VGEN</a>
-            <a>ROGUE</a>
-            <a>KO-FI</a>
-            <a>THRONE</a>
+            {
+              businessLinks.map((link, index) =>
+                <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.name}</a>)
+            }
           </ul>
           <ul>
-            <a>TWITTER</a>
-            <a>INSTAGRAM</a>
-            <a>TIKTOK</a>
-            <a>BANDLAB</a>
-            <a>DISCORD</a>
+            {
+              socialLinks.map((link, index) =>
+                <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.name}</a>)
+            }
           </ul>
         </nav>
       </section>

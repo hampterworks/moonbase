@@ -16,12 +16,22 @@
 
   & li {
     position: relative;
+    user-select: none;
+    &::selection {
+      background: none;
+    }
   }
 
   & a {
     position: relative;
     display: block;
     transition: color 0.3s ease;
+    /* Default text appearance */
+    color: inherit;
+  }
+
+  /* Active links get the gradient effect */
+  & a.active {
     background: linear-gradient(
       45deg,
       #b398f1,
@@ -35,21 +45,13 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    animation: gradientStatic 0s ease-in-out;
-  }
-
-  & a:not(:hover) {
-    background: none;
-    -webkit-text-fill-color: inherit;
-    color: inherit;
-  }
-
-  & a:hover {
     animation: gradientMove 2s ease-in-out infinite;
   }
 
-  & a.active {
-    position: relative;
+  /* Simple hover effect - just a subtle color change */
+  & a:not(.active):hover {
+    color: #4fc3f7;
+    transition: color 0.2s ease;
   }
 
   /* Create multiple bubbles around the active link - using identical base animations */
@@ -132,15 +134,6 @@
   }
   50% {
     background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes gradientStatic {
-  0% {
-    background-position: 0% 50%;
   }
   100% {
     background-position: 0% 50%;

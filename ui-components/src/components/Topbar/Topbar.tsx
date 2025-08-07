@@ -54,8 +54,21 @@ const Topbar: React.FC = () => {
     const link = linkRefs.current[index];
     if (!link || !ul || !sharkRef.current) return;
 
+    // Get the link element (anchor tag) inside the li
+    const linkElement = link.querySelector('a');
+    if (!linkElement) return;
+
+    // Calculate the center of the text relative to the container
+    const linkRect = linkElement.getBoundingClientRect();
+    const ulRect = ul.getBoundingClientRect();
+
+    // Calculate the vertical offset to center the shark with the text
+    const linkCenter = linkRect.top + linkRect.height / 2;
+    const ulTop = ulRect.top;
+    const verticalOffset = linkCenter - ulTop - (ulRect.height / 2);
+
     const position = index < 2 ? 'left' : 'right';
-    sharkRef.current.showNextTo(link, ul, position, { verticalOffset: -20 });
+    sharkRef.current.showNextTo(link, ul, position, { verticalOffset });
   }, []);
 
   const handleLinkLeave = useCallback(() => {
@@ -120,6 +133,7 @@ const Topbar: React.FC = () => {
             <Link
               href={link.href}
               className={isActiveLink(link.href) ? styles.active : ''}
+              data-text={link.label}
             >
               {link.label}
             </Link>

@@ -42,18 +42,25 @@
 }
 
 .videoContainer {
-  margin-bottom: 32px;
-  & iframe {
-    width: 500px;
-    height: 320px;
-  }
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  margin-bottom: 64px;
+}
+
+.videoContainer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .musicPageContainer .imageContainer {
   position: relative;
   height: 100vh;
   width: 100%;
-  top: 100px;
   min-width: 280px;
   contain: layout style;
 }
@@ -67,18 +74,15 @@
     gap: 16px;
   }
 
-  .musicPageContainer .imageContainer {
-    height: 50vh;
-  }
-
   .videoSection {
     grid-column: 1;
   }
 
-  .videoContainer iframe {
-    width: 100%;
-    max-width: 500px;
-    height: 320px;
+  .musicPageContainer .imageContainer {
+    height: auto;
+    aspect-ratio: 1; /* Or whatever ratio your image is */
+    max-width: 500px; /* Constrain width instead of height */
+    justify-self: center;
   }
 }
 
@@ -86,9 +90,5 @@
   .musicPageContainer {
     width: 95%;
     padding: 0 16px;
-  }
-
-  .musicPageContainer .imageContainer {
-    height: 40vh;
   }
 }

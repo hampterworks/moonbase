@@ -31,7 +31,7 @@ export type PlanktonContainerProps = {
   count?: number
 }
 
-const PlanktonContainer = ({ count = 22 }: PlanktonContainerProps) => {
+const PlanktonContainer = ({ count = 45 }: PlanktonContainerProps) => {
   const plankton = useMemo(() => {
     return Array.from({ length: count }, (_, i) => ({
       id: i,

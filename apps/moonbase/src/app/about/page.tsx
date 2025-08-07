@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const About = () => {
   return (
-    <main className='pageContainer'>
+    <main className={styles.aboutPageContainer}>
       <section className="imageContainer">
         <Image
           src={getImageSrc('/moonmain.png')}
