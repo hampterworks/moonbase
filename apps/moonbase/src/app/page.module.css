@@ -17,29 +17,42 @@
   height: 100%;
   position: relative;
   transform-origin: center;
-  transform: translateY(180px) scale(1.4) translateZ(0);
+  transform: translateY(200px) scale(1.6) translateZ(0);
   will-change: transform;
 }
 
+
 .button {
   position: fixed;
-  bottom: 115px;
+  bottom: 245px;
   left: 50%;
   transform: translateX(-50%) translateZ(0);
   background: #2572a9;
   border-radius: 8px;
   color: white;
-  font-size: 2rem;
+  font-size: 2.4rem;
   z-index: 10;
   white-space: nowrap;
   overflow: hidden;
-  transition: background 0.3s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  transition: background 0.3s ease, transform 0.4s ease;
   will-change: transform, box-shadow;
+
+  /* Force GPU acceleration for the shadow animation */
+  backface-visibility: hidden;
+  perspective: 1000px;
+
+  /* Animated color-shifting shadow */
+  box-shadow: 0 4px 20px rgba(37, 114, 169, 0.4);
+  animation: colorShiftShadow 4s ease-in-out infinite;
 
   &:hover {
     background: #9146ff;
     transform: translateX(-50%) scale(1.05) translateZ(0);
-    box-shadow: 0 0 25px rgba(145, 70, 255, 0.4);
+    /* Remove animation: none to keep the animation running */
+    /* Add additional hover shadow that will blend with the animated one */
+    box-shadow:
+      0 0 25px rgba(145, 70, 255, 0.4), /* hover glow */
+      0 4px 20px rgba(37, 114, 169, 0.4); /* base animated shadow */
   }
 
   & a {
@@ -50,6 +63,59 @@
     z-index: 1;
   }
 }
+
+@keyframes colorShiftShadow {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(37, 114, 169, 0.4);
+    transform: translateX(-50%) translateZ(0);
+  }
+  25% {
+    box-shadow: 0 4px 20px rgba(145, 70, 255, 0.3);
+    transform: translateX(-50%) translateZ(0);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(255, 70, 145, 0.3);
+    transform: translateX(-50%) translateZ(0);
+  }
+  75% {
+    box-shadow: 0 4px 20px rgba(70, 255, 145, 0.3);
+    transform: translateX(-50%) translateZ(0);
+  }
+}
+
+/* Update hover keyframes to blend with the hover glow */
+.button:hover {
+  animation: colorShiftShadowHover 4s ease-in-out infinite;
+}
+
+@keyframes colorShiftShadowHover {
+  0%, 100% {
+    box-shadow:
+      0 0 25px rgba(145, 70, 255, 0.4),
+      0 4px 20px rgba(37, 114, 169, 0.4);
+    transform: translateX(-50%) scale(1.05) translateZ(0);
+  }
+  25% {
+    box-shadow:
+      0 0 25px rgba(145, 70, 255, 0.4),
+      0 4px 20px rgba(145, 70, 255, 0.3);
+    transform: translateX(-50%) scale(1.05) translateZ(0);
+  }
+  50% {
+    box-shadow:
+      0 0 25px rgba(145, 70, 255, 0.4),
+      0 4px 20px rgba(255, 70, 145, 0.3);
+    transform: translateX(-50%) scale(1.05) translateZ(0);
+  }
+  75% {
+    box-shadow:
+      0 0 25px rgba(145, 70, 255, 0.4),
+      0 4px 20px rgba(70, 255, 145, 0.3);
+    transform: translateX(-50%) scale(1.05) translateZ(0);
+  }
+}
+
+
 
 /* Respect user preferences */
 @media (prefers-reduced-motion: reduce) {

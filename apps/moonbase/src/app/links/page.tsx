@@ -37,7 +37,7 @@ const Links = () => {
       </section>
       <section className="imageContainer">
         <Image
-          src={getImageSrc("/moonmain.png")}
+          src={getImageSrc("/moonlinks.png")}
           alt="Moon"
           fill
           priority

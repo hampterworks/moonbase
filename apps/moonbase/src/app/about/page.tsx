@@ -13,7 +13,7 @@ const About = () => {
     <main className={styles.aboutPageContainer}>
       <section className="imageContainer">
         <Image
-          src={getImageSrc('/moonmain.png')}
+          src={getImageSrc('/moonabout.png')}
           alt="Moon"
           fill
           priority
@@ -26,28 +26,29 @@ const About = () => {
       <section className={styles.aboutSection}>
         <h2>About</h2>
         <p>
-          Hi im Atlamoon a Musician, producer, singer and Twitch streamer. I play drums, bass guitar, guitar, piano, uke and of course the Kazoo ~
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-          I started streaming about 4-5 years ago? With many breaks in between. What led me to streaming was mostly VRChat.
-          Before I got into VRChat, I was mostly muted online. Never really liked my voice or thought I could do music until I found the music community.
-          I tried singing for a very small group of friends and they told me it comforted them and that I should stream.
-          It was my vacation so I streamed 2 times a day for people who couldn&#39;t sleep. I tried to cover as many timezones as possible and would sing and play for people who dealt with anxiety and stress,etc
-          Since then my community started growing.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
         <p>
-          My OCs always had been based around something with space. I&#39;m a big space nerd, always have been.
-          I also love the ocean as it reminds me of space on earth. hence why I got to the manta ray oc! I love manta rays. They're so gentle and majestic ~
-          Slowly learned more about content and became a fan of streaming music for my community. Been organizing big events, like 2d concerts, talent shows and set up a big community for neurodivergent people to find friends on twitch, set up collabs and have more people around them who understand.
+          Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.
+          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.
+          Atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa.
         </p>
         <ul>
-          <li>Moon facts:</li>
-          <li>I have a secret talent to sound like an animal crossing character.</li>
-          <li>My favorite movie is Interstellar (seen it 6 times)</li>
-          <li>I LOVE cooking and baking</li>
-          <li>If I were to die, I want to die in a blackhole</li>
-          <li>I memorized 90% of the bee movie scrips as it was a stream redeem</li>
-          <li>My fav food is sushi</li>
+          <li>Sample facts:</li>
+          <li>Placeholder text for interesting fact number one.</li>
+          <li>Another placeholder for a fun fact or detail.</li>
+          <li>Lorem ipsum dolor sit amet consectetur.</li>
+          <li>Sample text for an interesting personal detail.</li>
+          <li>Placeholder for a memorable experience or story.</li>
+          <li>Final placeholder for a favorite thing or preference.</li>
         </ul>
+
       </section>
     </main>
   );

@@ -16,7 +16,7 @@ const Music = () => {
     <main className={styles.musicPageContainer}>
       <section className={styles.imageContainer}>
         <Image
-          src={getImageSrc('/moonmain.png')}
+          src={getImageSrc('/moonmusic.png')}
           alt="Moon"
           fill
           priority
