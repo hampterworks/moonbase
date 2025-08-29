@@ -47,12 +47,9 @@
 
   &:hover {
     background: #9146ff;
+    /* Let the transition handle the transform smoothly */
     transform: translateX(-50%) scale(1.05) translateZ(0);
-    /* Remove animation: none to keep the animation running */
-    /* Add additional hover shadow that will blend with the animated one */
-    box-shadow:
-      0 0 25px rgba(145, 70, 255, 0.4), /* hover glow */
-      0 4px 20px rgba(37, 114, 169, 0.4); /* base animated shadow */
+    /* Don't change the animation - let the original one continue */
   }
 
   & a {
@@ -67,26 +64,25 @@
 @keyframes colorShiftShadow {
   0%, 100% {
     box-shadow: 0 4px 20px rgba(37, 114, 169, 0.4);
-    transform: translateX(-50%) translateZ(0);
   }
   25% {
     box-shadow: 0 4px 20px rgba(145, 70, 255, 0.3);
-    transform: translateX(-50%) translateZ(0);
   }
   50% {
     box-shadow: 0 4px 20px rgba(255, 70, 145, 0.3);
-    transform: translateX(-50%) translateZ(0);
   }
   75% {
     box-shadow: 0 4px 20px rgba(70, 255, 145, 0.3);
-    transform: translateX(-50%) translateZ(0);
   }
 }
 
-/* Update hover keyframes to blend with the hover glow */
+/* Add the hover glow as a separate shadow on hover */
 .button:hover {
-  animation: colorShiftShadowHover 4s ease-in-out infinite;
+  box-shadow:
+    0 0 25px rgba(145, 70, 255, 0.4), /* hover glow */
+    0 4px 20px rgba(37, 114, 169, 0.4); /* this will be overridden by animation but creates base */
 }
+
 
 @keyframes colorShiftShadowHover {
   0%, 100% {
