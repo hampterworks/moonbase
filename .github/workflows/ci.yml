@@ -39,27 +39,24 @@ jobs:
       - run: pnpm nx build ui-components
       - run: pnpm nx build @moonbase/moonbase --configuration=production
 
+      # Add CNAME file for custom domain
+      - name: Add CNAME file
+        run: echo "atlamoon.com" > apps/moonbase/out/CNAME
+
       # Debug: Check what was created and examine HTML content
       - name: Debug - Check build output and HTML content
         run: |
           echo "Contents of out directory:"
           ls -la apps/moonbase/out/
           echo ""
-          echo "Contents of out/.next directory:"
-          ls -la apps/moonbase/out/.next/
+          echo "CNAME file content:"
+          cat apps/moonbase/out/CNAME
           echo ""
-          echo "HTML files in .next:"
-          find apps/moonbase/out/.next -name "*.html" -type f
+          echo "HTML files:"
+          find apps/moonbase/out -name "*.html" -type f
           echo ""
-          echo "Image files in .next:"
-          find apps/moonbase/out/.next -name "*.png" -type f
-          echo ""
-          echo "=== CHECKING HTML CONTENT ==="
-          echo "Index.html img tags:"
-          grep -n "img\|Image\|moonmain\|bg\.png" apps/moonbase/out/.next/index.html || echo "No img tags found"
-          echo ""
-          echo "CSS background references:"
-          grep -n "bg\.png\|moonmain" apps/moonbase/out/.next/_next/static/css/*.css || echo "No CSS files found"
+          echo "Image files:"
+          find apps/moonbase/out -name "*.png" -type f
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
@@ -67,7 +64,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./apps/moonbase/out/.next
+          path: ./apps/moonbase/out
 
       - name: Deploy to GitHub Pages
         id: deployment

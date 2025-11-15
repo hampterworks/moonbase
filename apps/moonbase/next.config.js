@@ -6,7 +6,8 @@ const fs = require('fs');
 const useBuiltLibrary = fs.existsSync(path.resolve(__dirname, '../../dist/ui-components/index.js'));
 
 const isProd = process.env.NODE_ENV === 'production';
-const basePath = isProd ? '/moonbase' : '';
+// Remove basePath for custom domain - GitHub Pages with custom domain serves from root
+const basePath = '';
 
 const nextConfig = {
   nx: {
