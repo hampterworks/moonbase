@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const About = () => {
   return (
     <main className={styles.aboutPageContainer}>
-      <section className="imageContainer">
+      <section className={styles.imageContainer}>
         <Image
           src={getImageSrc('/moonabout.png')}
           alt="Moon"
@@ -39,6 +39,18 @@ const About = () => {
           At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.
           Atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa.
         </p>
+        <section className={`${styles.imageContainer} ${styles.mobileImageContainer}`}>
+          <Image
+            src={getImageSrc('/moonabout.png')}
+            alt="Moon"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
+            style={{
+              objectFit: 'contain',
+            }}
+          />
+        </section>
         <ul>
           <li>Sample facts:</li>
           <li>Placeholder text for interesting fact number one.</li>

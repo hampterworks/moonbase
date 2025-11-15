@@ -76,16 +76,23 @@
 @media (max-width: 1024px) {
   .contentWrapper {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
     gap: 16px;
   }
 
   .imageContainer {
     position: relative;
-    height: auto;
-    aspect-ratio: 1; /* Or whatever ratio your image is */
-    max-width: 500px; /* Constrain width instead of height */
+    height: 500px;
+    aspect-ratio: 1;
     justify-self: center;
+    order: 2;
+  }
+
+  .originalSongsSection {
+    order: 1;
+    & h2 {
+      margin-top: 16px;
+      align-self: center;
+    }
   }
 }
 

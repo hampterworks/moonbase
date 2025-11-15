@@ -126,6 +126,11 @@
     transform: translateY(0) scale(0.5) translateZ(0);
     opacity: 0;
   }
+
+  @media (max-width: 768px) {
+    margin-top: 8px;
+    margin-bottom: 10px;
+  }
 }
 
 @keyframes gradientMove {

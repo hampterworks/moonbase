@@ -33,11 +33,12 @@
 
 .socialLinks ul:nth-child(2) {
   font-size: clamp(2.2rem, 4vw, 4rem);
-  margin-top: -8px;
+  margin-top: 24px;
 }
 
 .socialLinks ul:nth-child(3) {
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  margin-top: 24px;
 }
 
 
@@ -55,46 +56,25 @@
 }
 
 @media (max-width: 768px) {
-  .socialLinks > ul {
-    line-height: 1.2; /* Reduce line height for tighter spacing */
-  }
-
-  .socialLinks ul:nth-child(1) {
-    font-size: clamp(1.75rem, 4vw, 4rem); /* Smoother scaling with 4vw */
-    line-height: 1.1; /* Even tighter for largest text */
-  }
-
-  .socialLinks ul:nth-child(2) {
-    font-size: clamp(1.4rem, 3vw, 3rem); /* Smoother scaling with 3vw */
-    margin-top: -2px; /* Reduce negative margin */
-    line-height: 1.15;
-  }
-
-  .socialLinks ul:nth-child(3) {
-    font-size: clamp(1.1rem, 2.5vw, 3rem); /* Smoother scaling with 2.5vw */
-    line-height: 1.2;
-  }
-}
-
-@media (max-width: 480px) {
   .socialLinks {
     gap: 16px; /* Reduce gap between ul elements */
+    padding: 0 8px;
   }
   .socialLinks ul:nth-child(1) {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: clamp(1.4rem, 5vw, 2.5rem);
     line-height: 0.7;
   }
 
   .socialLinks ul:nth-child(2) {
-    font-size: clamp(1.2rem, 4vw, 2rem);
+    font-size: clamp(1.1rem, 4vw, 2rem);
     line-height: 0.7;
-    margin-top: -4px; /* Add negative margin to pull it closer */
+    margin-top: 2px; /* Add negative margin to pull it closer */
   }
 
   .socialLinks ul:nth-child(3) {
     font-size: clamp(1rem, 3.5vw, 1.8rem);
-    line-height: 0.7;
-    margin-top: -2px; /* Add negative margin to pull it closer */
+    line-height: 1;
+    margin-top: 2px; /* Add negative margin to pull it closer */
   }
 }
 

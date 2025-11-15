@@ -17,14 +17,14 @@
   height: 100%;
   position: relative;
   transform-origin: center;
-  transform: translateY(200px) scale(1.6) translateZ(0);
+  transform: translateY(210px) scale(1.6) translateZ(0);
   will-change: transform;
 }
 
 
 .button {
   position: fixed;
-  bottom: 245px;
+  bottom: 180px;
   left: 50%;
   transform: translateX(-50%) translateZ(0);
   background: #2572a9;
@@ -58,6 +58,9 @@
     margin-top: 4px;
     position: relative;
     z-index: 1;
+  }
+  @media (max-width: 768px) {
+    bottom: 120px;
   }
 }
 
