@@ -25,7 +25,7 @@ const Index = () => {
         />
       </div>
       <button className={styles.button}>
-        <a href="">WATCH NOW</a>
+        <a href="https://www.twitch.tv/atlamoon/">WATCH NOW</a>
       </button>
     </div>
   )
