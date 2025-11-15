@@ -10,6 +10,9 @@
 .aboutSection {
   display: flex;
   flex-direction: column;
+  & a {
+    text-decoration: underline;
+  }
 }
 
 .aboutSection h2 {
@@ -69,11 +72,14 @@
 }
 
 .imageContainer {
-  position: relative;
-  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  height: 100vh;
   width: 100%;
+  min-width: 280px;
   justify-self: end;
   align-self: start;
+  contain: layout style;
   @media (max-width: 768px) {
     display: none;
   }
@@ -85,6 +91,8 @@
 
 .mobileImageContainer {
   display: none;
+  position: relative;
+  height: 400px;
   @media (max-width: 768px) {
     display: block;
   }
