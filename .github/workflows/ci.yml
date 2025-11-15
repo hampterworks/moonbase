@@ -39,25 +39,19 @@ jobs:
       - run: pnpm nx build ui-components
       - run: pnpm nx build @moonbase/moonbase --configuration=production
 
-      # Move files from .next to root and add CNAME
+      # Add CNAME to the .next directory and upload that as root
       - name: Prepare files for deployment
         run: |
-          cd apps/moonbase/out
-          mv .next/* .
-          rmdir .next
-          echo "atlamoon.com" > CNAME
+          echo "atlamoon.com" > apps/moonbase/out/.next/CNAME
 
       # Debug: Check what was created
       - name: Debug - Check build output
         run: |
-          echo "Contents of out directory after moving files:"
-          ls -la apps/moonbase/out/
+          echo "Contents of .next directory:"
+          ls -la apps/moonbase/out/.next/
           echo ""
           echo "CNAME file content:"
-          cat apps/moonbase/out/CNAME
-          echo ""
-          echo "Check for index.html:"
-          ls -la apps/moonbase/out/index.html
+          cat apps/moonbase/out/.next/CNAME
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
@@ -65,7 +59,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./apps/moonbase/out
+          path: ./apps/moonbase/out/.next
 
       - name: Deploy to GitHub Pages
         id: deployment
