@@ -39,24 +39,25 @@ jobs:
       - run: pnpm nx build ui-components
       - run: pnpm nx build @moonbase/moonbase --configuration=production
 
-      # Add CNAME file for custom domain
-      - name: Add CNAME file
-        run: echo "atlamoon.com" > apps/moonbase/out/CNAME
-
-      # Debug: Check what was created and examine HTML content
-      - name: Debug - Check build output and HTML content
+      # Move files from .next to root and add CNAME
+      - name: Prepare files for deployment
         run: |
-          echo "Contents of out directory:"
+          cd apps/moonbase/out
+          mv .next/* .
+          rmdir .next
+          echo "atlamoon.com" > CNAME
+
+      # Debug: Check what was created
+      - name: Debug - Check build output
+        run: |
+          echo "Contents of out directory after moving files:"
           ls -la apps/moonbase/out/
           echo ""
           echo "CNAME file content:"
           cat apps/moonbase/out/CNAME
           echo ""
-          echo "HTML files:"
-          find apps/moonbase/out -name "*.html" -type f
-          echo ""
-          echo "Image files:"
-          find apps/moonbase/out -name "*.png" -type f
+          echo "Check for index.html:"
+          ls -la apps/moonbase/out/index.html
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
