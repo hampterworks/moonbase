@@ -17,7 +17,7 @@ export const metadata = {
     siteName: 'Atlamoon',
     images: [
       {
-        url: '/rimunrimun.png',
+        url: '/oglink.png',
         width: 500,
         height: 500,
         alt: 'Atlamoon',
@@ -30,7 +30,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Atlamoon - Musician & Twitch Streamer',
     description: 'Welcome to Atlamoon - Musician, producer, singer and Twitch streamer.',
-    images: ['/rimunrimun.png'],
+    images: ['/oglink.png'],
   }
 }
 
